@@ -1,0 +1,98 @@
+# radui-admin generated; DO NOT EDIT. generation=8
+
+[g000-generation]
+user: ^$
+collection: ^radui-gen-000000000000000000000000a0000008$
+permissions: i
+
+[g010-root]
+user: .+
+collection: ^$
+permissions: R
+
+[s0001-admin-principal-a.b]
+user: ^a\.b$
+collection: ^a\.b$
+permissions: RW
+
+[s0002-admin-home-agent.1-a.b]
+user: ^a\.b$
+collection: ^agent\.1$
+permissions: RW
+
+[s0003-admin-home-n0-a.b]
+user: ^a\.b$
+collection: ^n0$
+permissions: RW
+
+[s0004-admin-home-x-y_z.0-a.b]
+user: ^a\.b$
+collection: ^x\-y_z\.0$
+permissions: RW
+
+[s0005-admin-toplevel-a.b]
+user: ^a\.b$
+collection: ^[^/]+$
+permissions: R
+
+[s0006-admin-all-a.b]
+user: ^a\.b$
+collection: ^[^/]+/.+$
+permissions: RWrwDO
+
+[s0007-user-principal-agent.1]
+user: ^agent\.1$
+collection: ^agent\.1$
+permissions: RW
+
+[s0008-user-own-agent.1]
+user: ^agent\.1$
+collection: ^agent\.1/[^/]+$
+permissions: rwDO
+
+[s0009-user-principal-n0]
+user: ^n0$
+collection: ^n0$
+permissions: RW
+
+[s0010-user-own-n0]
+user: ^n0$
+collection: ^n0/[^/]+$
+permissions: rwDO
+
+[s0011-user-principal-x-y_z.0]
+user: ^x\-y_z\.0$
+collection: ^x\-y_z\.0$
+permissions: RW
+
+[s0012-user-own-x-y_z.0]
+user: ^x\-y_z\.0$
+collection: ^x\-y_z\.0/[^/]+$
+permissions: rwDO
+
+[s0013-grant-agent.1]
+user: ^agent\.1$
+collection: ^x\-y_z\.0/my\.cal\+1$
+permissions: r
+
+[s0014-grant-agent.1]
+user: ^agent\.1$
+collection: ^x\-y_z\.0/x@y\~z$
+permissions: rwl
+
+[s0015-grant-n0]
+user: ^n0$
+collection: ^a\.b/_Hidden\-A$
+permissions: r
+
+[s0016-grant-x-y_z.0]
+user: ^x\-y_z\.0$
+collection: ^n0/A$
+permissions: r
+
+[zzz-deny]
+user: .*
+collection: .*
+permissions: 
+
+# radui-end generation=8 sha256=bebc63042eea5ccacd3a1ddf1ede1dafbb1c5a15f02519cc8670bc5be5a01eba

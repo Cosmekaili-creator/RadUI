@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000007
+FN:Anna Anniversary
+N:Anniversary;Anna;;;
+item1.X-ABDATE;type=pref:2010-06-12
+item1.X-ABLabel:_$!<Anniversary>!$_
+item2.X-ABDATE:2015-09-30
+item2.X-ABLabel:Moved in together
+X-ANNIVERSARY:2012-03-04
+END:VCARD

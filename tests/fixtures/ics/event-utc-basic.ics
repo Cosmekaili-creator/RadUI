@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:utc-basic@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260401T100000Z
+DTEND:20260401T113000Z
+SUMMARY:Planning meeting
+DESCRIPTION:Agenda:\n- budget\, forecast\n- hiring\; roles\nBackslash \\ ke
+ pt
+LOCATION:Example Hall\, Room 1
+URL:https://example.org/events/planning?a=1&b=2
+CATEGORIES:work,planning
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

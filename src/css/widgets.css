@@ -1,0 +1,136 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI widgets: date and time fields with the calendar picker, typed-confirm dialog, initials avatar,
+   repeatable rows, searchable picker, progress bar. Tokens come from tokens.css (light, dark, manual override).
+   Mobile first; touch targets are at least var(--tap); focus rings come from the global :focus-visible rule.
+   No inline styles anywhere: dynamic values go through classes or the audited `vars` helper (--progress). */
+
+/* ---------- date and time fields ---------- */
+.datefield__row { display: flex; gap: var(--s2); align-items: stretch; }
+.datefield__input, .timefield__input { min-width: 0; font-variant-numeric: tabular-nums; }
+.datefield__input { flex: 1; }
+.datefield__pick { flex: none; min-height: var(--tap); }
+.datefield[data-year-optional="true"] .field__hint { max-width: 60ch; }
+/* The error line is always laid out (two lines reserved); a message only changes its visibility, so nothing below moves. */
+.datefield__error { min-height: 2.9em; visibility: hidden; }
+.datefield__error[data-visible="true"] { visibility: visible; }
+
+/* ---------- calendar picker dialog ---------- */
+.dialog.dialog--cal { width: min(360px, calc(100vw - 16px)); }
+.dialog--cal .dialog__body { padding: var(--s3); gap: var(--s3); }
+.cal__head { display: grid; grid-template-columns: var(--tap) minmax(0, 1fr) minmax(5.25rem, 7rem) var(--tap); gap: var(--s2); align-items: center; }
+.cal__head .input--compact, .cal__head .btn--small { min-height: var(--tap); width: 100%; }
+.cal__nav { padding: 0; font-size: var(--fs-xl); line-height: 1; }
+.cal__grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.cal__grid th { padding: var(--s1) 0; font-size: var(--fs-xs); font-weight: 650; color: var(--ink-3); text-align: center; }
+.cal__grid td { padding: 1px; text-align: center; }
+.cal__blank { padding: 0; }
+.cal__day {
+  display: block; width: 100%; min-height: var(--tap); padding: 0; border: 1px solid transparent; border-radius: var(--r-md);
+  background: transparent; color: var(--ink); font-variant-numeric: tabular-nums; cursor: pointer;
+}
+.cal__day:hover:not(:disabled) { background: var(--accent-soft); }
+.cal__day:focus-visible { outline-offset: -3px; }
+.cal__day.is-today { border-color: var(--accent); font-weight: 700; }
+.cal__day.is-selected, .cal__day.is-selected:hover { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 700; }
+.cal__day:disabled { color: var(--ink-3); opacity: 0.55; cursor: not-allowed; text-decoration: line-through; }
+.cal__help { font-size: var(--fs-xs); }
+
+/* ---------- typed confirmation ---------- */
+.typed { gap: var(--s2); }
+.typed__match { min-height: 1.4em; }
+.typed__match[data-match="true"] { color: var(--ok); font-weight: 600; }
+.typed__match[data-match="true"]::before { content: "\2713\00A0"; }
+
+/* ---------- initials avatar ---------- */
+.avatar {
+  position: relative; display: inline-grid; place-items: center; flex: none; overflow: hidden; border-radius: 50%;
+  width: 48px; height: 48px; font-weight: 650; letter-spacing: 0.02em; line-height: 1; user-select: none;
+  background: var(--av-bg, var(--sunken)); color: var(--av-ink, var(--ink-2));
+}
+.avatar--sm { width: 40px; height: 40px; font-size: var(--fs-sm); }
+.avatar--md { width: 48px; height: 48px; font-size: var(--fs-md); }
+.avatar--lg { width: 64px; height: 64px; font-size: var(--fs-xl); }
+.avatar--xl { width: 88px; height: 88px; font-size: var(--fs-2xl); font-weight: 300; }
+.avatar__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.avatar[class*="avatar--c"] { --av-bg: color-mix(in srgb, var(--av-tone) 16%, #ffffff); --av-ink: color-mix(in srgb, var(--av-tone) 80%, #000000); }
+.avatar--c0 { --av-tone: #1e5e52; }
+.avatar--c1 { --av-tone: #7a5a2c; }
+.avatar--c2 { --av-tone: #34507a; }
+.avatar--c3 { --av-tone: #8a3a4c; }
+.avatar--c4 { --av-tone: #55642a; }
+.avatar--c5 { --av-tone: #5c4a80; }
+.avatar--c6 { --av-tone: #2f6a78; }
+.avatar--c7 { --av-tone: #7a4a2a; }
+:root[data-theme="dark"] .avatar[class*="avatar--c"] { --av-bg: color-mix(in srgb, var(--av-tone) 55%, #1f201e); --av-ink: #f1f1ec; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .avatar[class*="avatar--c"] { --av-bg: color-mix(in srgb, var(--av-tone) 55%, #1f201e); --av-ink: #f1f1ec; }
+}
+
+/* ---------- repeatable rows ---------- */
+.repeat { display: grid; gap: var(--s3); min-width: 0; margin: 0; padding: 0; border: 0; }
+.repeat > legend { padding: 0; margin-bottom: var(--s2); }
+.repeat__rows { display: grid; gap: var(--s3); }
+.repeat__row { padding: var(--s3); border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); }
+.repeat__row[data-new="true"] { border-color: var(--accent); }
+.repeat__group { display: grid; gap: var(--s3); min-width: 0; }
+.repeat__caption { font-size: var(--fs-sm); font-weight: 650; color: var(--ink-2); }
+.repeat__fields { display: grid; gap: var(--s3); grid-template-columns: minmax(0, 1fr); }
+.repeat__foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2); }
+.repeat__actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.repeat__add, .repeat__remove, .repeat__clearpref { min-height: var(--tap); }
+.repeat__textarea { min-height: calc(2 * var(--tap)); padding-top: var(--s2); padding-bottom: var(--s2); resize: vertical; }
+.repeat__more { min-width: 0; }
+.repeat__more > summary { display: flex; align-items: center; min-height: var(--tap); color: var(--accent-strong); font-weight: 550; cursor: pointer; }
+.repeat__morefields { display: grid; gap: var(--s3); padding-top: var(--s2); }
+.repeat select.input { cursor: pointer; }
+@media (min-width: 600px) {
+  .repeat__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .repeat__fields > :only-child { grid-column: 1 / -1; }
+}
+
+/* ---------- searchable picker ---------- */
+.dialog.dialog--picker { width: min(520px, calc(100vw - 16px)); }
+.picker__count, .picker__selected { min-height: 1.4em; }
+.picker__list {
+  max-height: min(50vh, 22rem); overflow-y: auto; overscroll-behavior: contain;
+  border: 1px solid var(--control); border-radius: var(--r-md); background: var(--surface);
+}
+.picker__option {
+  display: grid; align-content: center; gap: 1px; min-height: var(--tap); padding: var(--s2) var(--s3) var(--s2) calc(var(--s3) + 1.4em);
+  position: relative; border-top: 1px solid var(--line); cursor: pointer; overflow-wrap: anywhere;
+}
+.picker__option:first-child { border-top: 0; }
+.picker__option:hover { background: var(--surface-2); }
+.picker__option.is-active { background: var(--accent-soft); outline: 2px solid var(--focus); outline-offset: -2px; }
+.picker__option.is-selected { font-weight: 650; }
+.picker__option.is-selected::before { content: "\2713"; position: absolute; left: var(--s3); top: 50%; transform: translateY(-50%); color: var(--accent-strong); }
+.picker__option.is-disabled { color: var(--ink-3); cursor: not-allowed; }
+.picker__sub { font-size: var(--fs-sm); color: var(--ink-3); }
+
+/* ---------- progress ---------- */
+.progress { display: grid; gap: var(--s2); }
+.progress__head { display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
+.progress__label { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
+.progress__bar { height: 12px; border: 1px solid var(--control); border-radius: var(--r-pill); background: var(--sunken); overflow: hidden; }
+.progress__fill { width: var(--progress, 0%); height: 100%; border-radius: var(--r-pill); background: var(--accent); transition: width 0.2s ease; }
+.progress__text { font-size: var(--fs-sm); color: var(--ink-2); font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.progress[data-state="done"] .progress__fill { background: var(--ok); }
+.progress[data-state="error"] .progress__fill { background: var(--danger); }
+.progress[data-state="cancelled"] .progress__fill, .progress[data-state="cancelling"] .progress__fill { background: var(--warn); }
+.progress--indeterminate .progress__fill {
+  width: 100%; background: repeating-linear-gradient(135deg, var(--accent) 0 10px, var(--accent-soft) 10px 20px); background-size: 28px 28px;
+  animation: progress-slide 1s linear infinite;
+}
+@keyframes progress-slide { from { background-position: 0 0; } to { background-position: 28px 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .progress__fill { transition: none; }
+  .progress--indeterminate .progress__fill { animation: none; }
+}
+
+/* ---------- phones under 360 px: the calendar fills the width so a day cell reaches 44 px ---------- */
+@media (max-width: 359px) {
+  .dialog.dialog--cal { width: 100vw; max-width: 100vw; }
+  .dialog--cal .dialog__body { padding-left: 0; padding-right: 0; }
+  .dialog--cal .cal__head, .dialog--cal .cal__help, .dialog--cal .dialog__actions { padding-left: var(--s2); padding-right: var(--s2); }
+  .cal__grid td, .cal__grid th { padding-left: 0; padding-right: 0; }
+}

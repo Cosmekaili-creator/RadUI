@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555507
+FN:Grace Data
+N:Data;Grace;;;
+PHOTO:data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAA
+ AH0lEQVR4nGM4ISdHFcQwatCoQaMGjRo0atCoQQNvEADGtUkfvb3KfwAAAABJRU5ErkJggg==
+X-CUSTOM-EXT;X-FLAG=yes:custom value with \, escaped comma and \n newline
+END:VCARD

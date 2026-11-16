@@ -1,0 +1,83 @@
+{
+  "accounts": {
+    "agent-1": {
+      "admin": false,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Agent-1",
+      "hash": "$2b$04$6ff3b3bd11c44cac620c43d5b65377bd2ba7e8951c1e835ae40c9",
+      "ownSpace": false,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "bot"
+    },
+    "agent-2": {
+      "admin": false,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Agent-2",
+      "hash": "$2b$04$c3544aa158a89417843d45b303d3caf7f9d224ba8544d38affaff",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "bot"
+    },
+    "alice": {
+      "admin": true,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Alice",
+      "hash": "$2b$04$2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af7",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    },
+    "bob": {
+      "admin": false,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Bob",
+      "hash": "$2b$04$81b637d8fcd2c6da6359e6963113a1170de795e4b725b84d1e0b4",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    }
+  },
+  "bcryptCost": 4,
+  "genToken": "000000000000000000000000a0000008",
+  "generation": 8,
+  "grants": [
+    {
+      "by": "cli",
+      "collection": "cal-work",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "agent-1",
+      "level": "read",
+      "owner": "alice"
+    },
+    {
+      "by": "cli",
+      "collection": "contacts",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "agent-1",
+      "level": "readwrite",
+      "owner": "alice"
+    },
+    {
+      "by": "cli",
+      "collection": "shared-tasks",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "agent-1",
+      "level": "readwrite",
+      "owner": "bob"
+    },
+    {
+      "by": "cli",
+      "collection": "cal-work",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "agent-2",
+      "level": "read",
+      "owner": "alice"
+    }
+  ],
+  "schema": 1,
+  "tombstones": {}
+}

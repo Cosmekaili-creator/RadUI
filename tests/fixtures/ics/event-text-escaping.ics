@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:text-escaping@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260310T090000Z
+DTEND:20260310T100000Z
+SUMMARY:Budget\, planning\; phase 2 \\ review
+DESCRIPTION:Agenda:\n1. Intro\, goals\n2. Costs\; risks\n3. Path C:\\temp\\
+ x\n\nBackslash at end \\
+LOCATION:Room 4\, Building B\; Example Campus
+COMMENT:Quoted "double" and 'single' quotes: fine
+END:VEVENT
+END:VCALENDAR

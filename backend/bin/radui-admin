@@ -1,0 +1,12 @@
+#!/usr/bin/python3 -I
+# SPDX-License-Identifier: AGPL-3.0-or-later
+"""Launcher: runs without site or user paths, so the package directory (the
+parent of this script's directory) is put on sys.path explicitly."""
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+
+from radui_admin import server  # noqa: E402
+
+sys.exit(server.main())

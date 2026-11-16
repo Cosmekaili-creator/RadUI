@@ -1,0 +1,112 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Throwaway nginx for spike S11. Rendered by env.sh (placeholders @NAME@) and run unprivileged
+# with: nginx -c <rendered conf> -p <prefix> -e <error log>. Neutral names only.
+# It mimics the planned deployment: /ui/ static, /ui/api/ -> backend stub, / -> Radicale.
+
+worker_processes 1;
+pid @RUN@/nginx.pid;
+error_log @RUN@/error.log notice;
+events { worker_connections 64; }
+
+http {
+  include @MIME_TYPES@;
+  default_type application/octet-stream;
+  # The stock mime.types has no entries for these; without them .mjs and .webmanifest are served
+  # as application/octet-stream (module scripts are then refused). A types block in http {}
+  # merges with the included file; one in server {} or location {} would REPLACE it.
+  types { #extra-types
+    text/javascript mjs; #extra-types
+    application/manifest+json webmanifest; #extra-types
+    text/calendar ics; #extra-types
+    text/vcard vcf; #extra-types
+  } #extra-types
+  access_log @RUN@/access.log;
+  client_body_temp_path @RUN@/tmp/client_body;
+  proxy_temp_path       @RUN@/tmp/proxy;
+  fastcgi_temp_path     @RUN@/tmp/fastcgi;
+  uwsgi_temp_path       @RUN@/tmp/uwsgi;
+  scgi_temp_path        @RUN@/tmp/scgi;
+  server_tokens off;
+  absolute_redirect off;
+
+  server {
+    listen 127.0.0.1:@NGINX_PORT@;
+    server_name example.org;
+
+    # Same limit as the planned production vhost; /ui/api/ is tighter (see below).
+    client_max_body_size 50M;
+
+    # Server-level headers. A location that declares ANY add_header drops all of these,
+    # so every location below repeats the snippet explicitly (see /demo/replace/).
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header X-Content-Type-Options "nosniff" always;
+    add_header X-Frame-Options "DENY" always;
+    add_header Referrer-Policy "no-referrer" always;
+
+    # Forwarded-address handling: OVERWRITE, never append (a client-sent value must not survive).
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    # Headers Radicale trusts when present (base URL, logged client) must not come from the client:
+    proxy_set_header X-Forwarded-Host "";   # an empty value means the header is not sent upstream
+    proxy_set_header X-Remote-Addr "";
+
+    location = /ui { return 301 /ui/; }
+
+    # Static app. add_header here replaces the server-level ones -> repeat them.
+    location /ui/ {
+      alias @WWW@/ui/;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "DENY" always;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" always;
+      add_header Cache-Control "public, max-age=300" always;
+    }
+
+    # Files that must always be revalidated.
+    location ~ ^/ui/(sw\.js|manifest\.webmanifest|index\.html|config\.json)$ {
+      alias @WWW@/ui/$1;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "DENY" always;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" always;
+      add_header Cache-Control "no-cache" always;
+    }
+
+    # Admin backend (stub). Small bodies only.
+    location /ui/api/ {
+      client_max_body_size 64k;
+      proxy_pass http://127.0.0.1:@STUB_PORT@;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "DENY" always;
+      add_header Referrer-Policy "no-referrer" always;
+      # No add_header Cache-Control here: the backend sets "no-store" itself; adding it in nginx too
+      # produced a duplicated "no-store, no-store" in the first run (add_header never replaces
+      # an upstream header, it appends).
+    }
+
+    # Demonstration of the add_header inheritance rule (stub answers, no upstream).
+    location = /demo/inherit { default_type text/plain; return 200 "no add_header here: server-level headers apply\n"; }
+    location = /demo/replace {
+      default_type text/plain;
+      add_header X-Demo "location-level only" always;
+      return 200 "one add_header here: server-level headers are dropped\n";
+    }
+
+    # Everything else, including /.web/ (Radicale's own UI) and WebDAV methods.
+    location / {
+      proxy_pass http://127.0.0.1:@RADICALE_PORT@;
+      proxy_request_buffering on;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-Frame-Options "DENY" always;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'" always;
+    }
+  }
+}

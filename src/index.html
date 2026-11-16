@@ -1,0 +1,156 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <!-- Same policy as the one the web server sends for this application (frame-ancestors can only be sent as a header). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; manifest-src 'self'; worker-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>RadUI</title>
+  <meta name="description" content="Calendars, tasks and contacts on your own CalDAV/CardDAV server.">
+  <meta name="theme-color" content="#f2f2ee" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161716" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="RadUI">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon-180.png" sizes="180x180">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/widgets.css">
+  <link rel="stylesheet" href="css/contacts.css">
+  <link rel="stylesheet" href="css/collections.css">
+  <link rel="stylesheet" href="css/conflict.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/users.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/event.css">
+  <link rel="stylesheet" href="css/tasks.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <!-- Static text below is the English default; js/app.js replaces every [data-i18n] / [data-i18n-label] from the dictionaries. -->
+  <div id="app" data-state="loading" data-route="" aria-busy="true" data-testid="app-root">
+    <button type="button" class="skip" id="skip-link" data-testid="skip-link" data-i18n="shell.skip">Skip to content</button>
+
+    <header class="topbar" data-testid="app-header">
+      <a class="brand" href="#/" data-testid="brand">
+        <img class="brand__logo" src="icons/radui.svg" alt="" width="28" height="28">
+        <span class="brand__title" id="app-title" data-testid="app-title">RadUI</span>
+      </a>
+      <div class="topbar__tools">
+        <p class="topbar__user" id="header-user" data-testid="header-user" hidden></p>
+        <label class="tool">
+          <span class="visually-hidden" data-i18n="shell.language">Language</span>
+          <select class="input input--compact" id="lang-select" data-testid="lang-select">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+          </select>
+        </label>
+        <label class="tool">
+          <span class="visually-hidden" data-i18n="shell.theme">Theme</span>
+          <select class="input input--compact" id="theme-select" data-testid="theme-select">
+            <option value="auto" data-i18n="theme.auto">Automatic</option>
+            <option value="light" data-i18n="theme.light">Light</option>
+            <option value="dark" data-i18n="theme.dark">Dark</option>
+          </select>
+        </label>
+        <a class="btn btn--small topbar__icon" id="topbar-users" href="#/users" data-testid="topbar-users" data-i18n-label="nav.users" hidden>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 5.5a3 3 0 0 1 0 5.5M18 14.3c1.7.7 3 2.2 3 4.7"/></svg>
+        </a>
+        <a class="btn btn--small topbar__icon" id="topbar-settings" href="#/settings" data-testid="topbar-settings" data-i18n-label="nav.settings" hidden>
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+        </a>
+        <button type="button" class="btn btn--small" id="activity-toggle" aria-expanded="false" aria-controls="activity-panel" data-testid="activity-toggle" data-i18n="shell.activity">Activity</button>
+      </div>
+      <button type="button" class="btn btn--small topbar__signout" id="btn-sign-out" data-testid="btn-sign-out" data-i18n="nav.signOut" hidden>Sign out</button>
+    </header>
+
+    <!-- Bottom tab bar under 900 px (Calendar, Tasks, Contacts, Collections), side rail from 900 px (css/layout.css,
+         css/settings.css). js/app.js shows an entry only when its slice is enabled (ENABLED_SLICES) and, for Users, the
+         user is an administrator; the .nav__item--rail entries are not drawn on phones. -->
+    <nav class="nav" id="main-nav" aria-label="Main" data-i18n-label="shell.nav" data-testid="main-nav" hidden>
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a class="nav__link" id="nav-calendar" href="#/calendar" data-testid="nav-calendar">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>
+            <span data-i18n="nav.calendar">Calendar</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" id="nav-tasks" href="#/tasks" data-testid="nav-tasks">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <span data-i18n="nav.tasks">Tasks</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" id="nav-contacts" href="#/contacts" data-testid="nav-contacts">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.6 3-6 7-6s7 2.4 7 6"/></svg>
+            <span data-i18n="nav.contacts">Contacts</span>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" id="nav-collections" href="#/collections" data-testid="nav-collections">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4 3 8.5l9 4.5 9-4.5z"/><path d="m3 12.5 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>
+            <span data-i18n="nav.collections">Collections</span>
+          </a>
+        </li>
+        <li class="nav__item nav__item--rail">
+          <a class="nav__link" id="nav-users" href="#/users" data-testid="nav-users">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><path d="M16 5.5a3 3 0 0 1 0 5.5M18 14.3c1.7.7 3 2.2 3 4.7"/></svg>
+            <span data-i18n="nav.users">Users</span>
+          </a>
+        </li>
+        <li class="nav__item nav__item--rail">
+          <a class="nav__link" id="nav-settings" href="#/settings" data-testid="nav-settings">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg>
+            <span data-i18n="nav.settings">Settings</span>
+          </a>
+        </li>
+        <li class="nav__item nav__item--rail">
+          <a class="nav__link" id="nav-debug" href="#/debug" data-testid="nav-debug">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12h4l2.5-6 5 12 2.5-6H21"/></svg>
+            <span data-i18n="nav.debug">Diagnostics</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="frame">
+      <!-- PWA states: persistent status regions, shown by js/app.js (offline) and the PWA module (update). -->
+      <div class="banners" data-testid="banners">
+        <div class="banner banner--offline" id="banner-offline" role="status" data-testid="banner-offline" data-i18n="shell.offline" hidden>Offline: read-only. Changes are disabled until the connection returns.</div>
+        <div class="banner banner--update" id="banner-update" role="status" data-testid="banner-update" hidden>
+          <span data-i18n="shell.update.text">A new version is available.</span>
+          <button type="button" class="btn btn--small" id="btn-reload-update" data-testid="btn-reload-update" data-i18n="shell.update.reload">Reload</button>
+        </div>
+      </div>
+
+      <!-- Persistent live regions: messages stay until dismissed and are scoped to the screen family that produced them. -->
+      <div class="regions" data-testid="feedback-regions">
+        <div id="status-region" role="status" data-testid="status-region"></div>
+        <div id="alert-region" role="alert" data-testid="alert-region"></div>
+      </div>
+
+      <main class="main" id="main" tabindex="-1" data-testid="screen">
+        <noscript><p>This application needs JavaScript. / Cette application nécessite JavaScript.</p></noscript>
+      </main>
+    </div>
+
+    <aside class="activity" id="activity-panel" aria-labelledby="activity-title" data-testid="activity-panel" hidden>
+      <div class="activity__head">
+        <h2 class="activity__title" id="activity-title" tabindex="-1" data-i18n="activity.title">Activity</h2>
+        <button type="button" class="btn btn--small" id="activity-close" data-testid="activity-close" data-i18n-label="activity.close" aria-label="Close activity panel">&times;</button>
+      </div>
+      <p class="muted" id="activity-empty" data-testid="activity-empty" data-i18n="activity.empty">Nothing has happened yet.</p>
+      <ol class="activity__list" id="activity-list" data-testid="activity-list"></ol>
+    </aside>
+  </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555502
+FN:Bob Sample
+N:Sample;Bob;;;
+item1.TEL;VALUE=uri;pref=1;type=cell:tel:+1-555-0102
+item1.X-ABLabel:work mobile
+item2.EMAIL;TYPE=work:bob@example.org
+item2.X-ABLabel:team
+TEL;TYPE="voice,home";PREF=2:tel:+1-555-0103
+ANNIVERSARY:20100615
+GENDER:M
+KIND:individual
+PHOTO:data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAH0lEQVR4nGM4
+X-CUSTOM-EXT;X-FLAG=yes:custom value with \, escaped comma and \n newline
+END:VCARD

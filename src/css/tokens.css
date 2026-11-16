@@ -1,0 +1,123 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI design tokens — defined once; dark overrides below.
+   Palette: "lake" — cool-warm stone neutrals, one deep lake-green accent,
+   calendar colours from the Okabe–Ito colour-blind-safe set (set per calendar).
+   --control is the border of form controls: at least 3:1 against every surface (WCAG 1.4.11). */
+:root {
+  color-scheme: light;
+  --bg: #f2f2ee;
+  --surface: #ffffff;
+  --surface-2: #f8f8f5;
+  --sunken: #e8e8e2;
+  --line: #dcdcd4;
+  --line-strong: #b9b9ae;
+  --control: #767768;
+  --ink: #1c1d1b;
+  --ink-2: #464842;
+  --ink-3: #64665f;
+  --accent: #1e5e52;
+  --accent-ink: #ffffff;
+  --accent-soft: #dbe9e4;
+  --accent-strong: #133f37;
+  --danger: #a3321f;
+  --danger-soft: #f6e2dc;
+  --warn: #7d5200;
+  --warn-soft: #f6ead0;
+  --ok: #1f6446;
+  --ok-soft: #dcede2;
+  --focus: #1e5e52;
+  --shadow: 0 1px 2px rgb(28 29 27 / 0.06), 0 8px 24px rgb(28 29 27 / 0.08);
+  --chip-mix: 15%;
+  --logo-bg: #1e5e52;
+  --logo-fg: #f4f7f5;
+
+  /* type: system stack, scale ≈ 1.2 from 15 px; the period heading is the one loud element */
+  --font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Text", "Segoe UI", system-ui, Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.8438rem;
+  --fs-md: 0.9375rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem;
+  --fs-2xl: 1.875rem;
+  --fs-3xl: 2.75rem;
+  --lh: 1.45;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --s7: 48px;
+
+  --r-sm: 5px;
+  --r-md: 9px;
+  --r-lg: 14px;
+  --r-pill: 999px;
+
+  --tap: 44px;
+  --rail: 200px;
+  --activity-w: 340px;
+  --tabbar: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #161716;
+    --surface: #1f201e;
+    --surface-2: #252623;
+    --sunken: #111211;
+    --line: #34362f;
+    --line-strong: #52554c;
+  --control: #7e8077;
+    --ink: #ecece6;
+    --ink-2: #c6c7bd;
+    --ink-3: #a0a197;
+    --accent: #7cc6b2;
+    --accent-ink: #0c2420;
+    --accent-soft: #1d3731;
+    --accent-strong: #a6dccd;
+    --danger: #f0907a;
+    --danger-soft: #3b201a;
+    --warn: #e6b65c;
+    --warn-soft: #382c14;
+    --ok: #82cfa0;
+    --ok-soft: #17301f;
+    --focus: #a6dccd;
+    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px rgb(0 0 0 / 0.45);
+    --chip-mix: 24%;
+    --logo-bg: #1e5e52;
+    --logo-fg: #f4f7f5;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #161716;
+  --surface: #1f201e;
+  --surface-2: #252623;
+  --sunken: #111211;
+  --line: #34362f;
+  --line-strong: #52554c;
+  --control: #7e8077;
+  --ink: #ecece6;
+  --ink-2: #c6c7bd;
+  --ink-3: #a0a197;
+  --accent: #7cc6b2;
+  --accent-ink: #0c2420;
+  --accent-soft: #1d3731;
+  --accent-strong: #a6dccd;
+  --danger: #f0907a;
+  --danger-soft: #3b201a;
+  --warn: #e6b65c;
+  --warn-soft: #382c14;
+  --ok: #82cfa0;
+  --ok-soft: #17301f;
+  --focus: #a6dccd;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 10px 30px rgb(0 0 0 / 0.45);
+  --chip-mix: 24%;
+  --logo-bg: #1e5e52;
+  --logo-fg: #f4f7f5;
+}

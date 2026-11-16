@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Monochrome mark (Android themed icon / notifications): one colour, transparent background. -->
+  <defs>
+    <mask id="gap">
+      <rect width="64" height="64" fill="#fff"/>
+      <circle cx="42.6" cy="21.4" r="10" fill="#000"/>
+    </mask>
+  </defs>
+  <circle cx="32" cy="32" r="18" fill="none" stroke="#000" stroke-width="7" mask="url(#gap)"/>
+  <circle cx="44.7" cy="19.3" r="7.5" fill="#000"/>
+</svg>

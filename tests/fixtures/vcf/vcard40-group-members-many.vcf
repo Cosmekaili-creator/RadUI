@@ -1,0 +1,22 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000001
+KIND:group
+FN:Example Project Team
+NOTE:A group with many members
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000001
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000002
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000003
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000004
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000005
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000006
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000007
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000008
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000009
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000010
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000011
+MEMBER:urn:uuid:aaaaaaaa-0000-4000-8000-000000000012
+MEMBER:mailto:team-list@example.org
+REV:20260101T000000Z
+END:VCARD

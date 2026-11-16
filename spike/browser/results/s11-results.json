@@ -1,0 +1,259 @@
+{
+  "origin": "http://example.org:18080",
+  "headers": {},
+  "routing": {
+    "GET /ui/": {
+      "status": 200,
+      "contentType": "text/html",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "no-cache",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui (no slash)": {
+      "status": 301,
+      "contentType": "text/html",
+      "security": "all 4 present",
+      "csp": null,
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": "/ui/"
+    },
+    "GET /ui/app.js": {
+      "status": 200,
+      "contentType": "application/javascript",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "public, max-age=300",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/app.css": {
+      "status": 200,
+      "contentType": "text/css",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "public, max-age=300",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/index.html": {
+      "status": 200,
+      "contentType": "text/html",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "no-cache",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/sw.js": {
+      "status": 200,
+      "contentType": "application/javascript",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "no-cache",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/manifest.webmanifest": {
+      "status": 200,
+      "contentType": "application/manifest+json",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "no-cache",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/nonexistent.js (404)": {
+      "status": 404,
+      "contentType": "text/html",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": "public, max-age=300",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /ui/api/health": {
+      "status": 200,
+      "contentType": "application/json",
+      "security": "all 4 present",
+      "csp": null,
+      "cacheControl": "no-store",
+      "wwwAuthenticate": null,
+      "location": null,
+      "body": "{\"ok\": true}"
+    },
+    "GET /ui/api/whoami (anonymous, backend 401)": {
+      "status": 401,
+      "contentType": "application/json",
+      "security": "all 4 present",
+      "csp": null,
+      "cacheControl": "no-store",
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "PROPFIND / (anonymous)": {
+      "status": 401,
+      "contentType": "text/plain; charset=utf-8",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": null,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "location": null
+    },
+    "PROPFIND /alice/ (authenticated)": {
+      "status": 207,
+      "contentType": "text/xml; charset=utf-8",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /.web/": {
+      "status": 200,
+      "contentType": "text/html",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /.web/js/main.js": {
+      "status": 200,
+      "contentType": "application/javascript",
+      "security": "all 4 present",
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'",
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /demo/inherit (no add_header in the location)": {
+      "status": 200,
+      "contentType": "text/plain",
+      "security": "all 4 present",
+      "csp": null,
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": null
+    },
+    "GET /demo/replace (one add_header in the location)": {
+      "status": 200,
+      "contentType": "text/plain",
+      "security": "MISSING: strict-transport-security,x-content-type-options,x-frame-options,referrer-policy",
+      "csp": null,
+      "cacheControl": null,
+      "wwwAuthenticate": null,
+      "location": null,
+      "xDemo": "location-level only"
+    }
+  },
+  "xff": {
+    "sentByClient": {
+      "X-Forwarded-For": "203.0.113.9",
+      "X-Real-IP": "203.0.113.10",
+      "X-Forwarded-Host": "evil.example.org"
+    },
+    "backendReceived": {
+      "x-forwarded-for": "127.0.0.1",
+      "x-real-ip": "127.0.0.1",
+      "x-forwarded-proto": "http",
+      "x-forwarded-host": null,
+      "host": "example.org"
+    },
+    "radicaleLogLinesWithForwardedFor": 79,
+    "radicaleLogMentionsSpoofedAddress": false,
+    "radicaleLogSample": [
+      "[1117958/Thread-75 (process_request_thread)] [INFO] GET request for '/.web/js/main.js' received from 127.0.0.1 (forwarded for '127.0.0.1') HTTP/1.1",
+      "[1117958/Thread-76 (process_request_thread)] [INFO] PROPFIND request for '/xff-probe-1794495786186' with depth '0' received from 127.0.0.1 (forwarded for '127.0.0.1') HTTP/1.1",
+      "[1117958/Thread-77 (process_request_thread)] [INFO] PROPFIND request for '/alice/' with depth '0' received from 127.0.0.1 (forwarded for '127.0.0.1') HTTP/1.1",
+      "[1117958/Thread-77 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '127.0.0.1'): 'alice' (htpasswd)"
+    ],
+    "radicaleFailedLoginLine": [
+      "[1117958/Thread-77 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '127.0.0.1'): 'alice' (htpasswd)"
+    ],
+    "radicaleLogLineForProbeRequest": [
+      "[1117958/Thread-76 (process_request_thread)] [INFO] PROPFIND request for '/xff-probe-1794495786186' with depth '0' received from 127.0.0.1 (forwarded for '127.0.0.1') HTTP/1.1",
+      "[1117958/Thread-76 (process_request_thread)] [DEBUG] Sanitized path: '/xff-probe-1794495786186'"
+    ],
+    "radicaleSawXForwardedHostFromClient": false
+  },
+  "bodyLimits": {
+    "/ui/api/upload 50 KiB (limit 64k)": {
+      "status": 200,
+      "body": "{\"received\": 51200}"
+    },
+    "/ui/api/upload 100 KiB (limit 64k)": {
+      "status": 413,
+      "body": "<html> <head><title>413 Request Entity Too Large</title></h"
+    },
+    "/ui/api/upload 2 MiB, chunked-free (limit 64k)": {
+      "status": 413,
+      "body": "<html> <head><title>413 Request Entity Too Large</title></h"
+    },
+    "PUT / (Radicale) 49 MiB (limit 50M)": {
+      "status": 400,
+      "body": "Bad Request"
+    },
+    "PUT / (Radicale) 51 MiB (limit 50M)": {
+      "status": 413,
+      "body": "<html> <head><title>413 Request Entity Too Large</title></h"
+    }
+  },
+  "browser": {
+    "stubPage": {
+      "status": 200,
+      "cspViolations": 0,
+      "violations": [],
+      "consoleErrors": [],
+      "state": "ready",
+      "ical": "2.0",
+      "h1Color": "rgb(1, 2, 3)",
+      "moduleScriptRanAndImportedIcal": true,
+      "stylesheetApplied": true
+    },
+    "positiveControlInlinePage": {
+      "cspViolations": 4,
+      "directives": [
+        "script-src-elem",
+        "style-src-attr",
+        "script-src-attr",
+        "img-src"
+      ],
+      "inlineScriptRan": false,
+      "inlineHandlerRan": false,
+      "consoleErrors": 4
+    },
+    "radicaleWebUiUnderStrictCsp": {
+      "status": 200,
+      "cspViolations": 0,
+      "directives": [],
+      "sampleViolations": [],
+      "loadingVisible": false,
+      "loginVisible": true
+    },
+    "s12ichalInChromium": {
+      "importWorkedUnderCsp": true,
+      "cspViolations": 0,
+      "identicalToNodeResult": true,
+      "tzidQuoted": {
+        "zone": "floating",
+        "unix": 1773133200,
+        "iso": "2026-03-10T09:00:00.000Z"
+      },
+      "occurrences": 7
+    },
+    "fetchOversize": {
+      "POST /ui/api/upload 100 KiB (limit 64k)": {
+        "status": 413
+      },
+      "POST /ui/api/upload 3 MiB (limit 64k)": {
+        "status": 413
+      },
+      "PUT /alice/ 51 MiB (limit 50M)": {
+        "status": 413
+      }
+    }
+  }
+}

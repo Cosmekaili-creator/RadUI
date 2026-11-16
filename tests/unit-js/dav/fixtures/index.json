@@ -1,0 +1,432 @@
+{
+ "mkcalendar-ok": {
+  "method": "MKCALENDAR",
+  "path": "/alice/work/",
+  "status": 201,
+  "headers": {}
+ },
+ "mkcalendar-exists": {
+  "method": "MKCALENDAR",
+  "path": "/alice/work/",
+  "status": 409,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "mkcalendar-odd": {
+  "method": "MKCALENDAR",
+  "path": "/alice/My%20Cal%20%2B%C3%A9%20%40~x/",
+  "status": 201,
+  "headers": {}
+ },
+ "mkaddressbook-ok": {
+  "method": "MKCOL",
+  "path": "/alice/people/",
+  "status": 201,
+  "headers": {}
+ },
+ "put-event-created": {
+  "method": "PUT",
+  "path": "/alice/work/e1.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"936e46ec68fbcce5a35174b1a34b304b08a29fe0edcef80a3c8ce0512e27250a\""
+  }
+ },
+ "put-event2": {
+  "method": "PUT",
+  "path": "/alice/work/e2.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"15fbc02632e16dfac22d81bbbb381e477694da9e2238b6a1cb17c84340105358\""
+  }
+ },
+ "put-event3": {
+  "method": "PUT",
+  "path": "/alice/work/e3.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"d406e7c6efa7691b64be40820faf4ea6af1bcab5fa835ce170651a4ca8825366\""
+  }
+ },
+ "put-event-updated": {
+  "method": "PUT",
+  "path": "/alice/work/e1.ics",
+  "status": 204,
+  "headers": {
+   "etag": "\"16d43c32baa626b387d3631a909aa7ce088fe75c9ace2e460371988ad99be0cf\""
+  }
+ },
+ "put-event-stale": {
+  "method": "PUT",
+  "path": "/alice/work/e1.ics",
+  "status": 412,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "put-event-exists": {
+  "method": "PUT",
+  "path": "/alice/work/e1.ics",
+  "status": 412,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "put-event-odd": {
+  "method": "PUT",
+  "path": "/alice/My%20Cal%20%2B%C3%A9%20%40~x/o1.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"1a5c6eb22f065e59f78b0d501cfcf7f568cfb4a324cbf78f79d8f518f9976447\""
+  }
+ },
+ "put-contact-c1": {
+  "method": "PUT",
+  "path": "/alice/people/c1.vcf",
+  "status": 201,
+  "headers": {
+   "etag": "\"2272aa991a99aadd75acfa1cd62302c7c7742ed2da9230c285e30b2cc9e0858e\""
+  }
+ },
+ "put-contact-c2": {
+  "method": "PUT",
+  "path": "/alice/people/c2.vcf",
+  "status": 201,
+  "headers": {
+   "etag": "\"081b7194ad0112639856c3b4b76cb7e43720c4088c60470e9e48a43efbad23b5\""
+  }
+ },
+ "put-contact-c3": {
+  "method": "PUT",
+  "path": "/alice/people/c3.vcf",
+  "status": 201,
+  "headers": {
+   "etag": "\"3a2fc3d24cb7073ed8b6055a63c8865cecaa9074a728d6a76f91b3362c94772d\""
+  }
+ },
+ "put-event-shared": {
+  "method": "PUT",
+  "path": "/alice/shared-rw/s1.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"4ffb60539c1884a348494689661eda7e517d42a7c3636e543abc3addabe01ab3\""
+  }
+ },
+ "put-event-shared-ro": {
+  "method": "PUT",
+  "path": "/alice/shared-ro/s2.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"a9055827efc36baf058d95c42bb7aa1a4ba590abde87680491a69c5953097474\""
+  }
+ },
+ "propfind-home-depth1": {
+  "method": "PROPFIND",
+  "path": "/alice/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-work-depth0": {
+  "method": "PROPFIND",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-people-depth0": {
+  "method": "PROPFIND",
+  "path": "/alice/people/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-missing": {
+  "method": "PROPFIND",
+  "path": "/alice/nothing-here/",
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "propfind-bob-rw-grant": {
+  "method": "PROPFIND",
+  "path": "/alice/shared-rw/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-bob-ro-grant": {
+  "method": "PROPFIND",
+  "path": "/alice/shared-ro/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-bob-forbidden": {
+  "method": "PROPFIND",
+  "path": "/alice/work/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "propfind-bob-home": {
+  "method": "PROPFIND",
+  "path": "/bob/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "query-events": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "query-events-all": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "query-contacts": {
+  "method": "REPORT",
+  "path": "/alice/people/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "multiget-events": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "multiget-contacts": {
+  "method": "REPORT",
+  "path": "/alice/people/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "multiget-odd": {
+  "method": "REPORT",
+  "path": "/alice/My%20Cal%20%2B%C3%A9%20%40~x/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "get-event": {
+  "method": "GET",
+  "path": "/alice/work/e2.ics",
+  "status": 200,
+  "headers": {
+   "etag": "\"15fbc02632e16dfac22d81bbbb381e477694da9e2238b6a1cb17c84340105358\"",
+   "content-type": "text/calendar; charset=utf-8"
+  }
+ },
+ "get-contact": {
+  "method": "GET",
+  "path": "/alice/people/c1.vcf",
+  "status": 200,
+  "headers": {
+   "etag": "\"2272aa991a99aadd75acfa1cd62302c7c7742ed2da9230c285e30b2cc9e0858e\"",
+   "content-type": "text/vcard; charset=utf-8"
+  }
+ },
+ "sync-initial": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "put-event4": {
+  "method": "PUT",
+  "path": "/alice/work/e4.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"c34e1ed7b7e54ced5d8a564c54fdfcfb95ec5e78f4b88d0df51356964702bf0c\""
+  }
+ },
+ "delete-event3": {
+  "method": "DELETE",
+  "path": "/alice/work/e3.ics",
+  "status": 200,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "sync-incremental": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "sync-nochange": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "sync-invalid-token": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "sync-garbage-token": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "sync-forbidden": {
+  "method": "REPORT",
+  "path": "/alice/work/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "put-bob-readonly": {
+  "method": "PUT",
+  "path": "/alice/shared-ro/b1.ics",
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "put-bob-readwrite": {
+  "method": "PUT",
+  "path": "/alice/shared-rw/b2.ics",
+  "status": 201,
+  "headers": {
+   "etag": "\"ff7e299fadbf68c128259a2a40ede9c744ade102c62566ddc407a370ab04626f\""
+  }
+ },
+ "delete-stale": {
+  "method": "DELETE",
+  "path": "/alice/work/e2.ics",
+  "status": 412,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "get-missing": {
+  "method": "GET",
+  "path": "/alice/work/none.ics",
+  "status": 404,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "unauthenticated": {
+  "method": "PROPFIND",
+  "path": "/alice/",
+  "status": 401,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "proppatch-ok": {
+  "method": "PROPPATCH",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "proppatch-bob-denied": {
+  "method": "PROPPATCH",
+  "path": "/alice/shared-ro/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "propfind-principal": {
+  "method": "PROPFIND",
+  "path": "/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "propfind-homesets": {
+  "method": "PROPFIND",
+  "path": "/alice/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ },
+ "delete-collection-stale": {
+  "method": "DELETE",
+  "path": "/alice/nocomp/",
+  "status": 412,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "delete-collection-ok": {
+  "method": "DELETE",
+  "path": "/alice/nocomp/",
+  "status": 200,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8"
+  }
+ },
+ "delete-collection-bob": {
+  "method": "DELETE",
+  "path": "/alice/shared-ro/",
+  "status": 403,
+  "headers": {
+   "content-type": "text/plain; charset=utf-8"
+  }
+ },
+ "propfind-items-etags": {
+  "method": "PROPFIND",
+  "path": "/alice/work/",
+  "status": 207,
+  "headers": {
+   "content-type": "text/xml; charset=utf-8",
+   "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol"
+  }
+ }
+}

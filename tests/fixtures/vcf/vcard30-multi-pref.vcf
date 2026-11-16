@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000002
+FN:Pia Preferred
+N:Preferred;Pia;;;
+TEL;TYPE=CELL,pref:+1 555 0134
+TEL;TYPE=WORK,VOICE,pref:+1 555 0135
+TEL;TYPE=HOME:+1 555 0136
+EMAIL;TYPE=INTERNET,pref:pia.one@example.org
+EMAIL;TYPE=INTERNET;TYPE=pref:pia.two@example.org
+END:VCARD

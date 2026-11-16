@@ -1,0 +1,16 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000004
+FN:Adrian Addresses
+N:Addresses;Adrian;;;
+ADR;TYPE=HOME,PREF:;;10 Example Lane\, Suite 4\; East Wing,Annex Building\,
+  Floor 2;Sampletown\, North District;Example Region\;Province X;00002 B;Ex
+ ampleland of the Very Long Country Name
+ADR;TYPE=WORK:Post Box 1;Floor 3;1 Sample Way;City;;12345;Exampleland
+ADR;TYPE=OTHER:;;5 Example Road,Apartment 2,Entrance B;Sampletown;;00005;Ex
+ ampleland
+LABEL;TYPE=HOME:10 Example Lane\, Suite 4\nSampletown\, North District\nExa
+ mpleland
+REV:2026-01-01T00:00:00Z
+END:VCARD

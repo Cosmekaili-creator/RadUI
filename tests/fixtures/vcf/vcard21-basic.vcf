@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Legacy;Lena
+FN:Lena Legacy
+TEL;CELL;VOICE:+1 555 0144
+EMAIL;INTERNET:lena@example.org
+END:VCARD

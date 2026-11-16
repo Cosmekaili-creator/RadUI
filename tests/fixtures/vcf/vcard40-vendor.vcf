@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Address Book//Contacts 3.2//EN
+UID:urn:uuid:11111111-2222-3333-4444-555555555518
+FN:Judy Vendor
+N:Vendor;Judy;;;
+X-SOCIALPROFILE;type=twitter;x-user=judy:https://example.org/judy
+X-ABRELATEDNAMES;type=pref:Somebody
+item1.X-ABRELATEDNAMES:Another
+item1.X-ABLabel:_$!<Friend>!$_
+IMPP;X-SERVICE-TYPE=Example:example:judy
+LANG:en
+REV:20260101T000000Z
+END:VCARD

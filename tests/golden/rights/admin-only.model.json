@@ -1,0 +1,20 @@
+{
+  "accounts": {
+    "alice": {
+      "admin": true,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Alice",
+      "hash": "$2b$04$2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af7",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    }
+  },
+  "bcryptCost": 4,
+  "genToken": "000000000000000000000000a0000001",
+  "generation": 1,
+  "grants": [],
+  "schema": 1,
+  "tombstones": {}
+}

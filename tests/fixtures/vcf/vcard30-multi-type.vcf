@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000001
+FN:Mira Multitype
+N:Multitype;Mira;;;
+TEL;TYPE=home,fax:+1 555 0131
+TEL;TYPE=work,voice:+1 555 0132
+TEL;type=CELL;type=x-Mobile-Work:+1 555 0133
+EMAIL;TYPE=internet,home:mira.home@example.org
+EMAIL;TYPE=INTERNET;TYPE=WORK:mira.work@example.org
+URL;TYPE=x-blog,work:https://example.org/mira
+END:VCARD

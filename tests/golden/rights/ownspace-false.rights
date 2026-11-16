@@ -1,0 +1,58 @@
+# radui-admin generated; DO NOT EDIT. generation=4
+
+[g000-generation]
+user: ^$
+collection: ^radui-gen-000000000000000000000000a0000004$
+permissions: i
+
+[g010-root]
+user: .+
+collection: ^$
+permissions: R
+
+[s0001-admin-principal-alice]
+user: ^alice$
+collection: ^alice$
+permissions: RW
+
+[s0002-admin-home-dave-alice]
+user: ^alice$
+collection: ^dave$
+permissions: RW
+
+[s0003-admin-toplevel-alice]
+user: ^alice$
+collection: ^[^/]+$
+permissions: R
+
+[s0004-admin-all-alice]
+user: ^alice$
+collection: ^[^/]+/.+$
+permissions: RWrwDO
+
+[s0005-user-principal-carol]
+user: ^carol$
+collection: ^carol$
+permissions: RW
+
+[s0006-user-principal-dave]
+user: ^dave$
+collection: ^dave$
+permissions: RW
+
+[s0007-user-own-dave]
+user: ^dave$
+collection: ^dave/[^/]+$
+permissions: rwDO
+
+[s0008-grant-carol]
+user: ^carol$
+collection: ^dave/cal$
+permissions: rwl
+
+[zzz-deny]
+user: .*
+collection: .*
+permissions: 
+
+# radui-end generation=4 sha256=5f759888f5ee6fce40f4fa1aab1965c6e4e4635201391c137a8db12e8f855397

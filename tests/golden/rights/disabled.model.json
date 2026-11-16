@@ -1,0 +1,65 @@
+{
+  "accounts": {
+    "alice": {
+      "admin": true,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Alice",
+      "hash": "$2b$04$2bd806c97f0e00af1a1fc3328fa763a9269723c8db8fac4f93af7",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    },
+    "bob": {
+      "admin": false,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": true,
+      "displayName": "Bob",
+      "hash": "$2b$04$81b637d8fcd2c6da6359e6963113a1170de795e4b725b84d1e0b4",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    },
+    "carol": {
+      "admin": false,
+      "created": "2026-01-01T00:00:00Z",
+      "disabled": false,
+      "displayName": "Carol",
+      "hash": "$2b$04$4c26d9074c27d89ede59270c0ac14b71e071b15239519f75474b2",
+      "ownSpace": true,
+      "passwordChanged": "2026-01-01T00:00:00Z",
+      "type": "person"
+    }
+  },
+  "bcryptCost": 4,
+  "genToken": "000000000000000000000000a0000007",
+  "generation": 7,
+  "grants": [
+    {
+      "by": "cli",
+      "collection": "cal-work",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "bob",
+      "level": "read",
+      "owner": "alice"
+    },
+    {
+      "by": "cli",
+      "collection": "mine",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "bob",
+      "level": "read",
+      "owner": "carol"
+    },
+    {
+      "by": "cli",
+      "collection": "mine",
+      "created": "2026-01-01T00:00:00Z",
+      "grantee": "carol",
+      "level": "readwrite",
+      "owner": "bob"
+    }
+  ],
+  "schema": 1,
+  "tombstones": {}
+}

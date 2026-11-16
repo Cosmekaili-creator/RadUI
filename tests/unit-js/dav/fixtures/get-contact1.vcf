@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+UID:c1
+EMAIL;TYPE=INTERNET:ada@example.org
+FN:Ada Lovelace
+N:Lovelace;Ada;;;
+END:VCARD

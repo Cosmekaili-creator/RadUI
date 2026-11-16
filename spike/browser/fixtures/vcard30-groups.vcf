@@ -1,0 +1,23 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example//Spike//EN
+UID:urn:uuid:11111111-2222-3333-4444-555555555501
+FN:Alice Example
+N:Example;Alice;;;
+ORG:Example Org;Research
+item1.TEL;type=pref;type=VOICE:+1 555 0100
+item1.X-ABLabel:main line
+item2.URL:https://example.org/alice
+item2.X-ABLabel:_$!<HomePage>!$_
+TEL;TYPE=HOME,VOICE:+1 555 0101
+ADR;TYPE=WORK;X-CUSTOM="a;b:c":;;1 Example Street;Sampletown;;00000;Exampleland
+EMAIL;TYPE=INTERNET;TYPE=WORK:alice@example.org
+BDAY:1990-04-01
+CATEGORIES:friends,colleagues
+NOTE:Café à la crème, naïve façade; 日本語のメモ and a 😀 emoji. Café à la crème, 
+ naïve façade; 日本語のメモ and a 😀 emoji. Café à la crème, naïve façade; 日本語のメモ 
+ and a 😀 emoji. 
+PHOTO;ENCODING=b;TYPE=PNG:iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAIAAABvFaqvAAAAH
+ 0lEQVR4nGM4ISdHFcQwatCoQaMGjRo0atCoQQNvEADGtUkfvb3KfwAAAABJRU5ErkJggg==
+REV:2026-01-01T00:00:00Z
+END:VCARD

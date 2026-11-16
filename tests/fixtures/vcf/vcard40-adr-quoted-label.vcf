@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000005
+FN:Quentin Quoted
+N:Quoted;Quentin;;;
+ADR;LABEL="10 Example Lane\nSampletown, 00002\nExampleland";GEO="geo:12.50,
+ -34.25";TYPE=work;PREF=1:;;10 Example Lane;Sampletown;;00002;Exampleland
+ADR;TYPE="home,postal":;;2 Example Road;Sampletown;;00001;Exampleland
+TEL;VALUE=uri;TYPE=work,voice:tel:+1-555-0130
+EMAIL;TYPE=work;PREF=1:quentin@example.org
+REV:20260101T000000Z
+END:VCARD

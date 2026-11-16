@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000014
+FN:Lars Labels
+N:Labels;Lars;;;
+item1.TEL;type=pref:+1 555 0145
+item1.X-ABLabel:_$!<Mobile>!$_
+item2.TEL:+1 555 0146
+item2.X-ABLabel:_$!<iPhone>!$_
+item3.TEL:+1 555 0147
+item3.X-ABLabel:_$!<Main>!$_
+item4.TEL:+1 555 0148
+item4.X-ABLabel:_$!<HomeFAX>!$_
+item5.EMAIL;TYPE=INTERNET:lars@example.org
+item5.X-ABLabel:_$!<Other>!$_
+item6.URL:https://example.org/lars
+item6.X-ABLabel:_$!<HomePage>!$_
+item7.TEL:+1 555 0149
+item7.X-ABLabel:Night shift
+END:VCARD

@@ -1,0 +1,72 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI event form, recurrence builder, alarms, scope dialogs and the zone picker button (WP B3b).
+   Design tokens only (tokens.css); mobile first, wider layouts from 900 px; light and dark come from the tokens.
+   No inline styles. State is never colour alone: errors carry text, a DST gap carries a sentence. */
+
+.eform { display: grid; gap: var(--s4); min-width: 0; max-width: 46rem; }
+.eform__body { min-width: 0; }
+.eform .form, .eform .form__fields { display: grid; gap: var(--s4); min-width: 0; margin: 0; padding: 0; border: 0; }
+.eform .state { display: grid; gap: var(--s3); justify-items: start; padding: var(--s5) 0; }
+.eform .state__title { font-size: var(--fs-lg); font-weight: 650; }
+.eform .state__actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.eform .muted { color: var(--ink-2); }
+.eform .meta-line { font-size: var(--fs-sm); color: var(--ink-3); }
+.eform__calname { min-height: var(--tap); display: flex; align-items: center; margin: 0; font-weight: 600; }
+
+/* ---------- when ---------- */
+.eform__when { display: grid; gap: var(--s3); min-width: 0; margin: 0; padding: var(--s3); border: 1px solid var(--line); border-radius: var(--r-md); }
+.eform__when-row { display: grid; gap: var(--s3); grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.eform__preview { margin: 0; padding: var(--s2) var(--s3); border-radius: var(--r-md); background: var(--sunken); color: var(--ink-2); font-size: var(--fs-sm); overflow-wrap: anywhere; min-height: calc(var(--fs-sm) * 2); }
+.eform__preview[data-gap="true"] { background: var(--warn-soft); color: var(--warn); }
+.zone-btn { justify-content: flex-start; text-align: left; width: 100%; min-height: var(--tap); overflow-wrap: anywhere; }
+.eform .field[hidden], .eform .datefield[hidden], .eform .timefield[hidden] { display: none; }
+
+/* ---------- recurrence builder ---------- */
+.rec { display: grid; gap: var(--s3); min-width: 0; margin: 0; padding: var(--s3); border: 1px solid var(--line); border-radius: var(--r-md); }
+.rec[aria-invalid="true"] { border-color: var(--danger); }
+.rec__details { display: grid; gap: var(--s3); min-width: 0; }
+.rec__details[hidden], .rec .notice[hidden], .rec__exceptions[hidden] { display: none; }
+.rec__every { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.rec__every label { font-weight: 600; }
+.input--narrow { width: 6rem; min-width: 0; }
+.rec .fieldset { display: grid; gap: var(--s1); min-width: 0; margin: 0; padding: 0; border: 0; }
+.rec .fieldset--inline { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); align-items: center; }
+.rec .radio, .rec .check { display: inline-flex; align-items: center; gap: var(--s2); min-height: var(--tap); cursor: pointer; }
+.rec .radio-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); }
+/* "Ends": the three radios share one column, their extra controls (date, count) another, so the radios and texts line up
+   whatever the height of the control on the row. The row wrappers are transparent to the grid. */
+.rec .rec__ends { display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: center; column-gap: var(--s4); row-gap: var(--s1); }
+.rec .rec__ends > legend { grid-column: 1 / -1; }
+.rec .rec__ends .radio-row { display: contents; }
+.rec .rec__ends .radio { grid-column: 1; align-self: center; }
+.rec .rec__ends .radio-row > :not(.radio) { grid-column: 2; }
+.rec .with-suffix { display: inline-flex; align-items: center; gap: var(--s2); }
+.rec__days { gap: var(--s2); }
+.daybox { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: var(--tap); min-height: var(--tap); border: 1px solid var(--line-strong); border-radius: var(--r-md); cursor: pointer; font-weight: 600; background: var(--surface); }
+.daybox input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.daybox:has(input:checked) { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.daybox:has(input:focus-visible) { outline: 2px solid var(--focus); outline-offset: 2px; }
+.rec__summary { margin: 0; font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.rec__raw { font-family: var(--mono); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+.exlist { list-style: none; display: grid; gap: var(--s1); margin: 0; padding: 0; }
+.exlist__row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s2); min-height: var(--tap); }
+
+/* ---------- alarms ---------- */
+.alarms { display: grid; gap: var(--s2); min-width: 0; margin: 0; padding: 0; border: 0; }
+.alarms__list { display: grid; gap: var(--s2); }
+.alarms__row { display: flex; gap: var(--s2); align-items: center; }
+.alarms__row .input { flex: 1 1 auto; min-width: 0; }
+.alarms__actions { display: flex; gap: var(--s2); }
+
+/* ---------- dialogs ---------- */
+.dialog--scope .dialog__actions { flex-direction: column; align-items: stretch; }
+.dialog--scope .btn { height: auto; justify-content: flex-start; text-align: left; padding-top: var(--s2); padding-bottom: var(--s2); }
+.scope__choice { display: grid; gap: 2px; }
+.scope__head { font-weight: 650; }
+.scope__help { font-size: var(--fs-sm); font-weight: 400; opacity: 0.85; }
+.exc-list { list-style: disc; padding-left: 1.2em; display: grid; gap: var(--s1); margin: 0; }
+.dialog--picker .picker__sub { color: var(--ink-3); }
+
+@media (min-width: 640px) {
+  .eform__when-row { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1.4fr); align-items: start; }
+}

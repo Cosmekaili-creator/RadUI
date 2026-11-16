@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000011
+FN:Nina Nicknames
+N:Nicknames;Nina;;;
+NICKNAME:Nini,Nicky,Nine
+END:VCARD

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:folded-multibyte@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260507T090000Z
+DTEND:20260507T100000Z
+SUMMARY:Réunion café à Zürich — Réunion café à Zürich — Réunio
+ n café à Zürich — Réunion café à Zürich — Réunion café à Zü
+ rich — Réunion café à Zürich — Réunion café à Zürich — Réun
+ ion café à Zürich — Réunion café à Zürich — 終わり
+DESCRIPTION:日本語のテキスト、€uro ✓ 😀 日本語のテキ
+ スト、€uro ✓ 😀 日本語のテキスト、€uro ✓ 😀 日本
+ 語のテキスト、€uro ✓ 😀 日本語のテキスト、€uro ✓
+  😀 日本語のテキスト、€uro ✓ 😀 日本語のテキスト
+ 、€uro ✓ 😀 日本語のテキスト、€uro ✓ 😀 日本語の
+ テキスト、€uro ✓ 😀 日本語のテキスト、€uro ✓ 😀 
+ 日本語のテキスト、€uro ✓ 😀 日本語のテキスト、€u
+ ro ✓ 😀 
+LOCATION:ééééééééééééééééééééééééééééééééé
+ ééééééééééééééééééééééééééééééééééééé
+ éééééééééé
+END:VEVENT
+END:VCALENDAR

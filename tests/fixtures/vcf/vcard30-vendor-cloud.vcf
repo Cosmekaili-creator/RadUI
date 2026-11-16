@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Cloud//Contacts 70.1//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000007
+N:Cloud;Carl;;;
+FN:Carl Cloud
+X-PHONETIC-FIRST-NAME:Karl
+X-ANDROID-CUSTOM:vnd.example.cursor.item/nickname;Cee;1;;;;;;;;;;;;;
+EMAIL;TYPE=INTERNET;TYPE=HOME:carl@example.org
+TEL;TYPE=CELL:+1 555 0141
+CATEGORIES:myContacts,Friends
+REV:2026-01-01T00:00:00Z
+END:VCARD

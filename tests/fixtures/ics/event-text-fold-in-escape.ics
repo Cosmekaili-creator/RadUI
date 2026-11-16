@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:fold-in-escape@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260312T090000Z
+DTEND:20260312T100000Z
+SUMMARY:Fold inside an escape pair
+DESCRIPTION:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\
+ nbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\
+ ,tail after the escaped comma
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Test cases for deploy/fail2ban/radui-radicale-auth.conf.
+# Columns (tab separated): expected address or '-' (no match) | description | Radicale log message
+# as the systemd journal holds it (Radicale 3.9 'journal' log format). All addresses are
+# documentation-range addresses; all logins are invented.
+198.51.100.7	genuine IPv4 failure	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.7'): 'alice' (htpasswd)
+2001:db8::1234	genuine IPv6 failure	[4242/Thread-8 (process_request_thread)] [WARNING] Failed login attempt from ::1 (forwarded for '2001:db8::1234'): 'bob' (htpasswd)
+198.51.100.12	genuine failure, proxy connecting over IPv6 loopback, IPv4 client	[4242/Thread-9 (process_request_thread)] [WARNING] Failed login attempt from ::1 (forwarded for '198.51.100.12'): 'agent-1' (htpasswd)
+198.51.100.10	failure logged by the main thread	[4242] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.10'): 'alice' (htpasswd)
+198.51.100.66	INJECTION: the login holds a complete fake marker, real address is 198.51.100.66	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.66'): "x' (forwarded for '203.0.113.9'): " (htpasswd)
+198.51.100.66	INJECTION: the login is only the marker text	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.66'): "(forwarded for '203.0.113.9')" (htpasswd)
+198.51.100.66	INJECTION: the login holds a whole fake log line	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.66'): "[1/Thread-1] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '203.0.113.9'): z" (htpasswd)
+198.51.100.66	INJECTION: a line break in the login is escaped by repr, so it stays one line	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.66'): 'a\nFailed login attempt from 127.0.0.1 (forwarded for \'203.0.113.9\'): b' (htpasswd)
+-	INJECTION: no forwarded address (direct connection), the marker is only in the login	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1: "(forwarded for '203.0.113.9'): " (htpasswd)
+-	INJECTION: the login holds a whole fake line, no real forwarded address	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1: "Failed login attempt from 127.0.0.1 (forwarded for '203.0.113.9'): z" (htpasswd)
+-	forwarded value that is not a single address (client-chosen, nginx not in front)	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1 (forwarded for '203.0.113.9, 198.51.100.1'): 'alice' (htpasswd)
+-	REMOTE_ADDR is not the trusted proxy	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 192.0.2.50 (forwarded for '198.51.100.9'): 'alice' (htpasswd)
+-	failed login without a forwarded address	[4242/Thread-7 (process_request_thread)] [WARNING] Failed login attempt from 127.0.0.1: 'alice' (htpasswd)
+-	successful login (INFO)	[4242/Thread-7 (process_request_thread)] [INFO] Successful login: 'alice' (htpasswd)
+-	same text at another level	[4242/Thread-7 (process_request_thread)] [ERROR] Failed login attempt from 127.0.0.1 (forwarded for '198.51.100.9'): 'alice' (htpasswd)
+-	unrelated warning	[4242/Thread-7 (process_request_thread)] [WARNING] Rights file reloaded generation=7 source=main

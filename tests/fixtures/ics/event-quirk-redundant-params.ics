@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Mail Client//Calendar 9.9//EN
+BEGIN:VEVENT
+UID:quirk-redundant-params@example.org
+DTSTAMP;VALUE=DATE-TIME:20260101T000000Z
+DTSTART;VALUE=DATE-TIME:20260401T090000Z
+DTEND;VALUE=DATE-TIME:20260401T100000Z
+SUMMARY:Redundant VALUE parameters
+summary-extra;x-param=Mixed:lower-case names
+attendee;cn=Bob Sample;rsvp=true;partstat=needs-action:mailto:bob@example.o
+ rg
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Reminder
+TRIGGER;VALUE=DURATION:-PT10M
+END:VALARM
+END:VEVENT
+END:VCALENDAR

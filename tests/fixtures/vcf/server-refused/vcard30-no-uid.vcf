@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+FN:Una Uidless
+N:Uidless;Una;;;
+TEL;TYPE=CELL:+1 555 0143
+END:VCARD

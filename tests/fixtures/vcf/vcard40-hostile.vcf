@@ -1,0 +1,17 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:22222222-3333-4444-5555-000000000015
+FN:<script>alert(1)</script> Hostile
+N:Hostile;<img src=x onerror=alert(1)>;;;
+NICKNAME:"><svg/onload=alert(1)>
+ORG:<b>Bold Org</b>
+URL:javascript:alert(document.domain)
+URL:data:text/html;base64\,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
+URL:https://example.org/path?a=1&b=<x>
+EMAIL:hostile@example.org
+NOTE:<img src=x onerror=alert(1)>\n<a href="javascript:alert(2)">click</a>\
+ n&lt;script&gt;
+ADR;TYPE=home:;;<script>alert(3)</script> Road;Sampletown;;00001;Examplelan
+ d
+REV:20260101T000000Z
+END:VCARD

@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000016
+FN:Bidi ‮evil‬ ⁦x⁩ name
+N:Name;‮Bidi‬;;;
+NOTE:Line with ‏ right-to-left mark and ⁧ isolate
+END:VCARD

@@ -1,0 +1,8 @@
+{
+  "name": "RadUI stub",
+  "short_name": "RadUI",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "icons": []
+}

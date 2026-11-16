@@ -1,0 +1,18 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:11111111-2222-3333-4444-555555555501
+FN:Alice Example
+N:Example;Alice;;;
+NICKNAME:Ali,A
+ORG:Example Org;Research
+TITLE:Engineer
+TEL;TYPE=CELL:+1 555 0100
+EMAIL;TYPE=INTERNET;TYPE=WORK:alice@example.org
+ADR;TYPE=WORK:;;1 Example Street;Sampletown;Exampleland;00000;Nowhere
+URL:https://example.org/alice
+BDAY:1990-04-01
+CATEGORIES:friends,colleagues
+NOTE:First line\nSecond line\, with comma\; and semicolon
+REV:2026-01-01T00:00:00Z
+END:VCARD

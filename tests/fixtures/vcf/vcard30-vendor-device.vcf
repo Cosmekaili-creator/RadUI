@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Device//Contacts 99.0//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000006
+FN:Dora Device
+N:Device;Dora;;;
+X-ABUID:AAAAAAAA-0000-4000-8000-000000000006:ABPerson
+ORG:Example Corp;Unit 7
+TITLE:Engineer
+item1.EMAIL;type=INTERNET;type=pref:dora@example.org
+item1.X-ABLabel:
+item2.TEL;type=pref:+1 555 0140
+item2.X-ABLabel:_$!<Mobile>!$_
+item3.X-ABDATE;type=pref:2002-03-04
+item3.X-ABLabel:_$!<Anniversary>!$_
+X-SOCIALPROFILE;type=example;x-user=dora:https://example.org/dora
+IMPP;X-SERVICE-TYPE=Example;type=HOME:example:dora
+BDAY;X-APPLE-OMIT-YEAR=1604:1604-04-01
+NOTE:Line one\nLine two
+REV:2026-01-01T00:00:00Z
+END:VCARD

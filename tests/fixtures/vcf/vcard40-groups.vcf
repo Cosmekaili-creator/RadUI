@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555503
+FN:Carol Test
+N:Test;Carol;;;
+item1.TEL;VALUE=uri;PREF=1;TYPE=cell:tel:+1-555-0103
+item1.X-ABLabel:work mobile
+item2.EMAIL;TYPE=work:carol@example.org
+item2.X-ABLabel:team
+TEL;TYPE="voice,home";PREF=2:tel:+1-555-0104
+GENDER:F
+KIND:individual
+REV:20260101T000000Z
+END:VCARD

@@ -1,0 +1,15 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: AGPL-3.0-or-later -->
+<!-- Positive control for the CSP violation collector: this page MUST produce violations. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>CSP positive control</title>
+  <script>document.title = "inline script ran";</script>
+</head>
+<body>
+  <p style="color: red" data-testid="p">inline style attribute</p>
+  <button onclick="document.title = 'handler ran'" data-testid="b">inline handler</button>
+  <img src="https://example.org/blocked.png" alt="external image">
+</body>
+</html>

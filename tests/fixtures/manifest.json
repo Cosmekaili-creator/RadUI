@@ -1,0 +1,458 @@
+{
+ "ics/event-utc-basic.ics": {
+  "kind": "event"
+ },
+ "ics/event-floating.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-single.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-multiday.ics": {
+  "kind": "event"
+ },
+ "ics/event-dst-spring-gap.ics": {
+  "kind": "event"
+ },
+ "ics/event-dst-autumn-overlap.ics": {
+  "kind": "event"
+ },
+ "ics/event-recur-weekly-dst.ics": {
+  "kind": "event"
+ },
+ "ics/event-recur-exdate-override-moved.ics": {
+  "kind": "event"
+ },
+ "ics/event-rdate.ics": {
+  "kind": "event"
+ },
+ "ics/event-bysetpos.ics": {
+  "kind": "event"
+ },
+ "ics/event-tzid-quoted-unknown.ics": {
+  "kind": "event",
+  "expect": "readonly-tz",
+  "tzids": {
+   "UTC+02:00": "unknown"
+  }
+ },
+ "ics/event-tzid-windows-name.ics": {
+  "kind": "event",
+  "expect": "readonly-tz",
+  "tzids": {
+   "Example Mountain Time": "unknown"
+  }
+ },
+ "ics/event-tzid-embedded.ics": {
+  "kind": "event",
+  "tzids": {
+   "America/New_York": "embedded"
+  }
+ },
+ "ics/event-tzid-custom-embedded.ics": {
+  "kind": "event",
+  "tzids": {
+   "Example Standard Time": "embedded"
+  }
+ },
+ "ics/event-tzid-iana-novtimezone.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl",
+   "America/New_York": "intl"
+  }
+ },
+ "ics/event-alarms.ics": {
+  "kind": "event"
+ },
+ "ics/event-attendees.ics": {
+  "kind": "event"
+ },
+ "ics/event-xprops.ics": {
+  "kind": "event"
+ },
+ "ics/event-folded-multibyte.ics": {
+  "kind": "event"
+ },
+ "ics/event-nonascii.ics": {
+  "kind": "event"
+ },
+ "ics/event-duration.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-duration.ics": {
+  "kind": "event"
+ },
+ "ics/event-lf.ics": {
+  "kind": "event"
+ },
+ "ics/event-cr.ics": {
+  "kind": "event"
+ },
+ "ics/event-no-final-newline.ics": {
+  "kind": "event",
+  "byteExact": false
+ },
+ "ics/event-fold-foreign.ics": {
+  "kind": "event"
+ },
+ "ics/event-recur-until-utc.ics": {
+  "kind": "event"
+ },
+ "ics/event-recur-allday.ics": {
+  "kind": "event"
+ },
+ "ics/event-existing-managed.ics": {
+  "kind": "event"
+ },
+ "ics/event-vendor-cloud.ics": {
+  "kind": "event"
+ },
+ "ics/event-cancelled-override.ics": {
+  "kind": "event"
+ },
+ "ics/event-multiple-uids.ics": {
+  "kind": "event",
+  "expect": "multiple-uids"
+ },
+ "ics/event-malformed-line.ics": {
+  "kind": "event",
+  "expect": "parse-error"
+ },
+ "ics/event-unterminated.ics": {
+  "kind": "event",
+  "expect": "parse-error"
+ },
+ "ics/event-journal.ics": {
+  "kind": "event",
+  "expect": "unsupported-component"
+ },
+ "ics/event-bad-date.ics": {
+  "kind": "event",
+  "expect": "invalid-value"
+ },
+ "ics/event-blank-lines.ics": {
+  "kind": "event",
+  "byteExact": false
+ },
+ "ics/todo-due-completed.ics": {
+  "kind": "task"
+ },
+ "ics/todo-open.ics": {
+  "kind": "task"
+ },
+ "ics/todo-recurring.ics": {
+  "kind": "task"
+ },
+ "ics/todo-zoned.ics": {
+  "kind": "task"
+ },
+ "vcf/vcard30-basic.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-groups.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-groups.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-types.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-photo.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-photo-jpeg.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-photo.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-group-kind.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-group-apple.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-bday-nomd.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-bday-omit-year.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-nonascii-folded.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard-multiple.vcf": {
+  "kind": "contact",
+  "expect": "multiple-vcards"
+ },
+ "vcf/vcard21-qp.vcf": {
+  "kind": "contact",
+  "expect": "unsupported-version"
+ },
+ "vcf/vcard-malformed.vcf": {
+  "kind": "contact",
+  "expect": "parse-error"
+ },
+ "vcf/vcard30-lf.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-cr.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-vendor.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-escapes.vcf": {
+  "kind": "contact"
+ },
+ "ics/event-text-escaping.ics": {
+  "kind": "event"
+ },
+ "ics/event-text-unescaped-separators.ics": {
+  "kind": "event"
+ },
+ "ics/event-text-fold-in-escape.ics": {
+  "kind": "event"
+ },
+ "ics/event-categories-lists.ics": {
+  "kind": "event"
+ },
+ "ics/event-rrule-bysetpos-nth.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-rrule-count-weekly.ics": {
+  "kind": "event"
+ },
+ "ics/event-rrule-until-utc-zoned.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-rrule-until-date-allday.ics": {
+  "kind": "event"
+ },
+ "ics/event-rrule-yearly-bysetpos.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-dtend-exclusive.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-dtend-year-end.ics": {
+  "kind": "event"
+ },
+ "ics/event-allday-dtend-leap-day.ics": {
+  "kind": "event"
+ },
+ "ics/todo-related-to-child.ics": {
+  "kind": "task"
+ },
+ "ics/todo-related-to-parent.ics": {
+  "kind": "task",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-quirk-zero-duration.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-quirk-exdate-value-date.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-vendor-mail-suite.ics": {
+  "kind": "event",
+  "tzids": {
+   "Example Standard Time": "embedded"
+  }
+ },
+ "ics/event-vendor-device.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-vendor-mail-client.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "ics/event-vendor-sync.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "intl"
+  }
+ },
+ "vcf/vcard30-adr-long-multi.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-group-apple-many.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-grouped-properties.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-photo-b-20k.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-vendor-cloud.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-vendor-device.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-vendor-sync.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-adr-quoted-label.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-group-members-many.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-photo-100k.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-vendor-mail-client.vcf": {
+  "kind": "contact"
+ },
+ "ics/event-attach-inline-binary.ics": {
+  "kind": "event"
+ },
+ "ics/event-quirk-redundant-params.ics": {
+  "kind": "event"
+ },
+ "ics/event-quirk-no-dtstamp.ics": {
+  "kind": "event"
+ },
+ "vcf/vcard40-photo-encoding-b.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-multi-type.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-multi-pref.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-multi-pref.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-tel-uri.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-category-comma.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-structured-lists.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-anniversary-xabdate.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-anniversary.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-text-bday.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-bday-yearless.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-multi-nickname.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-group-apple-labels.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-group-unknown-member.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard21-basic.vcf": {
+  "kind": "contact",
+  "expect": "unsupported-version"
+ },
+ "vcf/vcard30-apple-labels.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard40-hostile.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-bidi.vcf": {
+  "kind": "contact"
+ },
+ "vcf/import-mixed.vcf": {
+  "kind": "contact",
+  "expect": "parse-error"
+ },
+ "vcf/server-refused/vcard30-no-uid.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-empty-rows.vcf": {
+  "kind": "contact"
+ },
+ "vcf/vcard30-tel-type-main.vcf": {
+  "kind": "contact"
+ },
+ "vcf/import/book-basic.vcf": {
+  "kind": "contact",
+  "expect": "multiple-vcards",
+  "note": "import corpus: 8 contacts (4 of them lossy on Radicale), 2 groups, a duplicate UID, a vCard 2.1 card, an unterminated chunk, stray text; lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/event-series-overrides-exdates.ics": {
+  "kind": "event",
+  "tzids": {
+   "Europe/Paris": "embedded"
+  }
+ },
+ "ics/event-two-zones.ics": {
+  "kind": "event",
+  "tzids": {
+   "America/New_York": "embedded",
+   "Asia/Tokyo": "intl"
+  }
+ },
+ "ics/event-custom-rrule.ics": {
+  "kind": "event"
+ },
+ "ics/import/import-recurring-overrides.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/import/import-method-request.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/import/import-nouid.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/import/import-mixed-components.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/import/import-unknown-tzid.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ },
+ "ics/import/import-unescaped-comma.ics": {
+  "kind": "event",
+  "expect": "multiple-uids",
+  "note": "import corpus (RUN3 C2): lives in a subdirectory the flat corpus loaders do not scan"
+ }
+}

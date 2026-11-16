@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example//Spike//EN
+BEGIN:VEVENT
+UID:spike-fold@example.org
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260401
+x-custom-lower;x-param=Mixed:lowercase property name
+SUMMARY:Réunion café à Zürich — Réunion café à Zürich — Réunion café à Zürich — Réunion café à Zürich — Réunion café à Zürich — 
+LOCATION:Example Hall\, Room 1\; Floor 2
+ORGANIZER;CN="Alice Example":mailto:alice@example.org
+ATTENDEE;CN=Bob;PARTSTAT=NEEDS-ACTION;RSVP=TRUE:mailto:bob@example.org
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT15M
+DESCRIPTION:Reminder
+END:VALARM
+END:VEVENT
+END:VCALENDAR

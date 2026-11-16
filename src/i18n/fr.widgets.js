@@ -1,0 +1,86 @@
+// SPDX-License-Identifier: AGPL-3.0-or-later
+// Partie « widgets » du dictionnaire français (champs date et heure, dialogues, lignes répétables, sélecteur,
+// progression). Mêmes clés et mêmes `{paramètres}` que en.widgets.js.
+
+export default Object.freeze({
+  // dialogs
+  'dialog.cancel': 'Annuler',
+  'dialog.confirm': 'Confirmer',
+  'dialog.ok': 'OK',
+  'dialog.typed.label': 'Saisissez le nom pour confirmer',
+  'dialog.typed.hint': 'Saisissez exactement {expected} pour confirmer.',
+  'dialog.typed.match': 'Le nom correspond. Vous pouvez confirmer.',
+  'dialog.typed.noMatch': 'Le nom ne correspond pas encore.',
+
+  // date field
+  'widget.date.letter.d': 'JJ',
+  'widget.date.letter.m': 'MM',
+  'widget.date.letter.y': 'AAAA',
+  'widget.date.hint': 'Saisissez la date au format {format}, par exemple {example}. La forme AAAA-MM-JJ fonctionne aussi.',
+  'widget.date.hintYearless': 'Saisissez la date au format {format}, ou {formatShort} sans l’année, par exemple {example}. La forme AAAA-MM-JJ fonctionne aussi.',
+  'widget.date.pick': 'Choisir la date',
+  'widget.date.pickFor': 'Choisir la date pour {label}',
+  'widget.date.err.required': 'Saisissez une date.',
+  'widget.date.err.format': 'Cette date n’est pas valide. Utilisez {format}, par exemple {example}.',
+  'widget.date.err.year': 'Ajoutez l’année, par exemple {example}.',
+  'widget.date.err.month': 'Le mois doit être compris entre 1 et 12.',
+  'widget.date.err.day': 'Le jour {day} n’existe pas dans ce mois.',
+  'widget.date.err.min': 'La date doit être le {min} ou plus tard.',
+  'widget.date.err.max': 'La date doit être le {max} ou plus tôt.',
+  'widget.date.picker.title': 'Choisir une date : {label}',
+  'widget.date.picker.titlePlain': 'Choisir une date',
+  'widget.date.picker.month': 'Mois',
+  'widget.date.picker.year': 'Année',
+  'widget.date.picker.prevMonth': 'Mois précédent',
+  'widget.date.picker.nextMonth': 'Mois suivant',
+  'widget.date.picker.today': 'Aujourd’hui',
+  'widget.date.picker.clear': 'Effacer la date',
+  'widget.date.picker.grid': 'Calendrier, {month}',
+  'widget.date.picker.unavailable': '{date} (indisponible)',
+  'widget.date.picker.keys': 'Les flèches déplacent d’un jour ou d’une semaine. Page précédente et Page suivante changent le mois (avec Maj, l’année). Début et Fin vont au début et à la fin de la semaine. Entrée choisit le jour.',
+
+  // time field
+  'widget.time.format24': 'HH:MM',
+  'widget.time.format12': 'h:mm AM/PM',
+  'widget.time.hint24': 'Saisissez l’heure au format {format} sur 24 heures, par exemple {example}.',
+  'widget.time.hint12': 'Saisissez l’heure au format {format}, par exemple {example}.',
+  'widget.time.err.required': 'Saisissez une heure.',
+  'widget.time.err.format': 'Cette heure n’est pas valide. Utilisez {format}, par exemple {example}.',
+  'widget.time.err.hour': 'L’heure doit être comprise entre 0 et 23 (de 1 à 12 avec AM ou PM).',
+  'widget.time.err.minute': 'Les minutes doivent être comprises entre 00 et 59.',
+  'widget.time.err.min': 'L’heure doit être {min} ou plus tard.',
+  'widget.time.err.max': 'L’heure doit être {max} ou plus tôt.',
+
+  // repeatable rows
+  'widget.rep.type': 'Type',
+  'widget.rep.custom': 'Libellé personnalisé',
+  'widget.rep.preferred': 'Préféré',
+  'widget.rep.clearPref': 'Retirer le choix préféré',
+  'widget.rep.prefCleared': 'Aucune entrée n’est marquée comme préférée.',
+  'widget.rep.more': 'Autres champs',
+  'widget.rep.remove': 'Retirer',
+  'widget.rep.added': '{row} ajouté.',
+  'widget.rep.removed': '{row} retiré.',
+  'widget.rep.max': 'Vous pouvez ajouter au plus {max} entrées ici.',
+
+  // picker
+  'widget.picker.search': 'Rechercher',
+  'widget.picker.hint': 'Saisissez pour filtrer. Utilisez les flèches Haut et Bas, puis Entrée pour choisir.',
+  'widget.picker.hintMulti': 'Saisissez pour filtrer. Utilisez les flèches Haut et Bas, puis Entrée pour cocher ou décocher une entrée.',
+  'widget.picker.count.one': '{n} résultat',
+  'widget.picker.count.other': '{n} résultats',
+  'widget.picker.none': 'Aucun résultat.',
+  'widget.picker.truncated': '{n} résultats. Affichage des {shown} premiers ; précisez la recherche pour réduire la liste.',
+  'widget.picker.selected.one': '{n} sélectionné',
+  'widget.picker.selected.other': '{n} sélectionnés',
+  'widget.picker.confirm': 'Terminé',
+
+  // progress
+  'widget.progress.counts': '{done} sur {total} ({percent} %)',
+  'widget.progress.working': 'En cours…',
+  'widget.progress.cancel': 'Annuler',
+  'widget.progress.cancelling': 'Annulation après les requêtes en cours…',
+  'widget.progress.cancelled': 'Annulé.',
+  'widget.progress.done': 'Terminé.',
+  'widget.progress.failed': 'L’opération n’est pas allée jusqu’au bout.',
+});

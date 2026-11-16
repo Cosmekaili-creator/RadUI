@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000006
+FN:Dr. Alex Quinn Lists Jr.
+N:Lists;Alex,Alexis;Quinn,Q;Dr.,Prof.;Jr.,III
+ORG:Example Org;Research;Applied\; Division
+ADR;TYPE=HOME:;;1 Example Road,Building 2;Sampletown;Exampleshire;00001;Exa
+ mpleland
+ADR;TYPE=WORK:Box 9;Floor 3,Room 4;2 Sample Street;Testville;;00002;Example
+ land
+END:VCARD

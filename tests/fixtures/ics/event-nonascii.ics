@@ -1,0 +1,12 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:nonascii@example.org
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260508
+SUMMARY:Ünïcödé — 日本語 — עברית — 😀
+LOCATION:Café Müller, Zürich
+DESCRIPTION:Ça va très bien\nÅngström ≠ Angstrom
+END:VEVENT
+END:VCALENDAR

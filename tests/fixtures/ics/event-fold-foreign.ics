@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:fold-foreign@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260514T100000Z
+DTEND:20260514T110000Z
+SUMMARY:Folded by a foreign writer at 76 octets and with a tab continuation li
+ ne after it
+	and another one
+DESCRIPTION:fold in the middle of a wo
+ rd and a trailing space 
+ kept
+LOCATION:Plain
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,36 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Sync Adapter//Calendar 4.2//EN
+BEGIN:VEVENT
+UID:sync-adapter-1@example.org
+DTSTAMP:20260101T000000Z
+DTSTART;TZID=Europe/Paris:20260709T150000
+DTEND;TZID=Europe/Paris:20260709T160000
+SUMMARY:Sync-adapter shaped meeting
+STATUS:TENTATIVE
+CLASS:CONFIDENTIAL
+GEO:12.50;-34.25
+URL:https://example.org/meetings/7
+COMMENT:Bring the report
+CONTACT;ALTREP="https://example.org/contact":Reception\, Example Corp
+RESOURCES:Projector,Whiteboard
+ORGANIZER;CN="Alice Example";SENT-BY="mailto:assistant@example.org":mailto:
+ alice@example.org
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=FALS
+ E;CN="Bob Sample";DELEGATED-FROM="mailto:carol@example.org":mailto:bob@exa
+ mple.org
+ATTENDEE;CUTYPE=RESOURCE;ROLE=NON-PARTICIPANT;PARTSTAT=NEEDS-ACTION;CN=Meet
+ ing Room 3:mailto:room3@example.org
+ATTACH;FMTTYPE=application/pdf;FILENAME=agenda.pdf:https://example.org/file
+ s/agenda.pdf
+X-EXAMPLE-SYNC-ID:7788
+X-EXAMPLE-SYNC-FLAGS;X-VERSION=2:dirty\,new
+BEGIN:VALARM
+ACTION:EMAIL
+TRIGGER:-P1D
+SUMMARY:Reminder mail
+DESCRIPTION:Tomorrow
+ATTENDEE:mailto:alice@example.org
+END:VALARM
+END:VEVENT
+END:VCALENDAR

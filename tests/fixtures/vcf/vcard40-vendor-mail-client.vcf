@@ -1,0 +1,14 @@
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Mail Client//Contacts 9.9//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000009
+FN:Mia Mailer
+N:Mailer;Mia;;;
+EMAIL;PREF=1:mia@example.org
+EMAIL;TYPE=work:mia.work@example.org
+TEL;TYPE=cell;VALUE=TEXT:+1 555 0143
+X-MOZILLA-HTML:TRUE
+ANNIVERSARY:20100606
+CATEGORIES:Work
+REV:20260101T000000Z
+END:VCARD

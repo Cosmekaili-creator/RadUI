@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav"><response><href>/alice/My%20Cal%20%2B%C3%A9%20%40~x/o1.ics</href><propstat><prop><getetag>"1a5c6eb22f065e59f78b0d501cfcf7f568cfb4a324cbf78f79d8f518f9976447"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RadUI Test//EN
+BEGIN:VEVENT
+UID:o1
+DTSTART:20260603T100000Z
+DTEND:20260603T110000Z
+DTSTAMP:20260101T000000Z
+SUMMARY:Odd collection event
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response></multistatus>

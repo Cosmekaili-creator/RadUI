@@ -1,0 +1,149 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI users and permissions: the accounts table, the create form, the account view, the permission matrix and
+   the sharing / password / change-preview dialogs. Design tokens only (tokens.css: light, dark and the manual
+   override). Mobile first; targets are at least var(--tap) high. No inline styles anywhere. Everything is scoped to
+   `.users` (the screen) or `.dialog--users` / `.dialog--share` (the dialogs, which live under <body>). */
+
+/* ---------- shared bits ---------- */
+:is(.users, .dialog--users, .dialog--share) .tag {
+  display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: var(--r-pill);
+  background: var(--sunken); color: var(--ink-2); font-size: var(--fs-xs); font-weight: 550; line-height: 1.6; white-space: nowrap;
+}
+:is(.users, .dialog--users, .dialog--share) .tag--quiet { background: transparent; border: 1px solid var(--line-strong); }
+:is(.users, .dialog--users, .dialog--share) .tag--ok { background: var(--ok-soft); color: var(--ok); }
+:is(.users, .dialog--users, .dialog--share) .tag--warn { background: var(--warn-soft); color: var(--warn); }
+:is(.users, .dialog--users, .dialog--share) .tag--accent { background: var(--accent-soft); color: var(--accent-strong); }
+:is(.users, .dialog--users, .dialog--share) .notice--quiet { background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line); }
+:is(.users, .dialog--users, .dialog--share) .small { font-size: var(--fs-sm); }
+:is(.users, .dialog--users, .dialog--share) .radio { display: inline-flex; align-items: center; gap: var(--s2); min-height: var(--tap); cursor: pointer; }
+:is(.users, .dialog--users, .dialog--share) .radio--block { display: flex; align-items: flex-start; padding: var(--s2) 0; min-height: 0; }
+:is(.users, .dialog--users, .dialog--share) .radio--block input { margin-top: 4px; }
+:is(.users, .dialog--users, .dialog--share) input[type="radio"],
+:is(.users, .dialog--users, .dialog--share) input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); flex: none; margin: 0; }
+:is(.users, .dialog--users, .dialog--share) .fieldset { display: grid; gap: var(--s1); min-width: 0; margin: 0; padding: var(--s2) var(--s3); border: 1px solid var(--line); border-radius: var(--r-md); }
+:is(.users, .dialog--users, .dialog--share) .fieldset__legend { font-size: var(--fs-sm); font-weight: 650; color: var(--ink-2); padding: 0 var(--s1); }
+:is(.users, .dialog--users, .dialog--share) .fieldset--inline { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s5); align-items: center; }
+:is(.users, .dialog--users, .dialog--share) .link-strong { font-weight: 650; text-decoration-thickness: 1px; text-underline-offset: 2px; color: var(--ink); }
+:is(.users, .dialog--users, .dialog--share) .link-strong:hover { color: var(--accent); }
+.dialog--users .dialog__body, .dialog--share .dialog__body { gap: var(--s3); }
+.dialog--users .dialog__body > *, .dialog--share .dialog__body > * { min-width: 0; }
+
+/* ---------- screen ---------- */
+.users { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s4); }
+.users__body, .users__host { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s4); min-width: 0; }
+.matrix-host { min-width: 0; }
+.users .toolbar { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; justify-content: space-between; }
+.users .toolbar__end { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.users__denied { display: grid; gap: var(--s3); justify-items: start; padding: var(--s4); border: 1px solid var(--danger); border-radius: var(--r-lg); background: var(--danger-soft); color: var(--danger); }
+.users__denied .btn { color: var(--accent-ink); }
+.seg { display: inline-flex; gap: 2px; padding: 2px; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); }
+.seg__item { display: inline-flex; align-items: center; min-height: 36px; padding: 0 var(--s4); border-radius: var(--r-sm); color: var(--ink-2); font-weight: 600; text-decoration: none; }
+.seg__item:hover { background: var(--sunken); }
+.seg__item[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+.seg__item:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+
+/* ---------- tables ---------- */
+.users .table-wrap, .dialog--share .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); max-width: 100%; }
+.users .table-wrap:focus-visible { outline: 3px solid var(--focus); outline-offset: -2px; }
+.users .table, .dialog--share .table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.users .table th, .users .table td, .dialog--share .table th, .dialog--share .table td { text-align: left; padding: var(--s3) var(--s3); border-bottom: 1px solid var(--line); vertical-align: middle; overflow-wrap: anywhere; }
+/* words are not cut unless a single one is wider than its column ("Administrato-r", "agent-\n1" were) */
+.users .table th, .users .table td { overflow-wrap: break-word; }
+.users .table thead th, .dialog--share .table thead th { color: var(--ink-3); font-weight: 600; background: var(--surface-2); }
+.users .table th[scope="row"] { font-weight: 600; color: var(--ink); }
+/* A login is one word: it never wraps at a hyphen (agent-1 stays on one line); only an unusually long one is cut with an ellipsis
+   (its full text is the link's title). */
+.users .table .link-login { display: inline-block; max-width: 16rem; vertical-align: bottom; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.users .table tbody tr:last-child > *, .dialog--share .table tbody tr:last-child > * { border-bottom: 0; }
+.users .table tr.is-disabled > * { color: var(--ink-3); }
+.matrix__path { display: block; font-family: var(--mono); font-size: var(--fs-xs); color: var(--ink-3); font-weight: 400; overflow-wrap: anywhere; }
+.yn { display: inline-flex; align-items: center; gap: 4px; font-weight: 600; }
+.yn.is-yes { color: var(--ok); }
+.yn.is-no { color: var(--ink-3); font-weight: 500; }
+
+/* ---------- forms and the account view ---------- */
+.users .form { display: grid; gap: var(--s4); width: min(560px, 100%); padding-bottom: var(--s6); min-width: 0; }
+.users .form__actions { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: flex-end; }
+.users .form__errors-title { font-weight: 650; }
+.users .form__errors ul { list-style: disc; padding-left: 1.2em; }
+.users .field-group { display: grid; gap: var(--s3); }
+.users .check-block { display: grid; gap: 0; }
+.users .check-block .field__hint { padding-left: calc(20px + var(--s2)); }
+.users .card-section { display: grid; gap: var(--s3); padding: var(--s4); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); min-width: 0; }
+.users .sub-title { font-size: var(--fs-md); font-weight: 650; padding-top: var(--s2); }
+.users .section-title--lg { font-size: var(--fs-lg); letter-spacing: -0.01em; color: var(--ink); }
+.users .kv { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s1); margin: 0; }
+.users .kv__row { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: var(--s2); align-items: center; }
+.users .kv__k { color: var(--ink-3); font-size: var(--fs-sm); }
+.users .kv__v { margin: 0; overflow-wrap: anywhere; }
+.users .detail__actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.users [aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+.users .rows { display: grid; border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); overflow: hidden; }
+.users .rows > li { border-top: 1px solid var(--line); }
+.users .rows > li:first-child { border-top: 0; }
+.users .row { display: flex; gap: var(--s3); align-items: center; justify-content: space-between; padding: var(--s3); min-height: 56px; flex-wrap: wrap; }
+.users .row__main { display: grid; min-width: 0; gap: 2px; }
+.users .row__title { font-weight: 600; overflow-wrap: anywhere; }
+.users .row__sub { font-size: var(--fs-sm); color: var(--ink-3); overflow-wrap: anywhere; }
+.users .inline-form { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: end; }
+.users .inline-form .field { min-width: 12rem; flex: 1 1 12rem; }
+
+/* ---------- password strength and the secret ---------- */
+.strength { display: flex; align-items: center; gap: var(--s3); flex-wrap: wrap; font-size: var(--fs-sm); }
+.strength__bar { display: inline-flex; gap: 3px; }
+.strength__seg { width: 28px; height: 8px; border-radius: var(--r-pill); background: var(--sunken); box-shadow: inset 0 0 0 1px var(--line); }
+.strength__seg.is-on { background: var(--accent); box-shadow: none; }
+.strength[data-score="0"] .strength__seg.is-on, .strength[data-score="1"] .strength__seg.is-on { background: var(--danger); }
+.strength[data-score="2"] .strength__seg.is-on { background: var(--warn); }
+.strength__text { font-weight: 600; color: var(--ink-2); }
+.secret-box { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; padding: var(--s3); border: 1px dashed var(--line-strong); border-radius: var(--r-md); background: var(--surface-2); }
+.secret { font-family: var(--mono); font-size: var(--fs-lg); letter-spacing: 0.02em; font-weight: 600; user-select: all; -webkit-user-select: all; flex: 1 1 15rem; min-width: 0; color: var(--ink); overflow-x: auto; white-space: nowrap; padding: var(--s1) 0; }
+.secret:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.dialog--users .preview { font-size: var(--fs-md); font-weight: 600; padding: var(--s3); border-radius: var(--r-md); background: var(--accent-soft); color: var(--accent-strong); overflow-wrap: anywhere; }
+.dialog--users .field__error { color: var(--danger); font-weight: 600; }
+
+/* ---------- permission matrix ---------- */
+.users .matrix__filter { max-width: 22rem; }
+.users .matrix-wrap { max-width: 100%; }
+.users .matrix { border-collapse: separate; border-spacing: 0; width: 100%; min-width: 38rem; font-size: var(--fs-sm); }
+.users .matrix th, .users .matrix td { padding: var(--s3) var(--s2); border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); text-align: left; vertical-align: middle; background: var(--surface); }
+.users .matrix thead th { background: var(--surface-2); vertical-align: bottom; }
+.users .matrix tbody tr:last-child > * { border-bottom: 0; }
+.users .matrix .matrix__corner, .users .matrix .matrix__coll { position: sticky; left: 0; z-index: 1; border-left: 0; min-width: 11rem; box-shadow: 1px 0 0 var(--line); }
+.users .matrix .matrix__corner { background: var(--surface-2); }
+.matrix__acct { min-width: 10.75rem; }
+.matrix__chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: var(--s1); }
+.matrix__coll { display: grid; gap: 2px; font-weight: 600; justify-items: start; }
+.matrix__coll .btn { margin-top: var(--s1); min-height: 32px; }
+.perm-select { width: 100%; min-width: 8.75rem; font-size: 0.78rem; padding-inline: 6px 4px; }
+.users .table--stack .perm-select { max-width: 20rem; }
+.perm-fixed { display: inline-block; padding: 2px 10px; border-radius: var(--r-pill); background: var(--sunken); color: var(--ink-2); font-weight: 600; font-size: var(--fs-xs); white-space: nowrap; }
+
+/* ---------- sharing and delete dialogs ---------- */
+.dialog.dialog--share { width: min(640px, calc(100vw - 2 * var(--s4))); }
+.dialog--share .share__who { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.dialog--share .share__who > .input { flex: 1 1 12rem; width: auto; min-width: 0; }
+.dialog--share .share__preview, .dialog--users .share__preview { display: grid; gap: var(--s1); font-size: var(--fs-sm); padding-left: 1.1em; list-style: disc; }
+.dialog--share .share__previewbox { display: grid; gap: var(--s2); padding: var(--s3); border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--line); }
+.dialog--share .share__result[data-result="error"] { color: var(--danger); font-weight: 600; }
+.dialog--share .share__result[data-result="ok"] { color: var(--ok); font-weight: 600; }
+.dialog--share .field__error { color: var(--danger); font-weight: 600; }
+.dialog--users .delete__list { display: grid; gap: var(--s2); list-style: none; padding: 0; margin: 0; }
+.dialog--users .delete__coll { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; justify-content: space-between; }
+.dialog--users .delete__collname { overflow-wrap: anywhere; font-weight: 600; }
+
+/* ---------- phones: tables become stacked cards with the column name before each value ---------- */
+@media (max-width: 699px) {
+  .users .table--stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .users .table--stack, .users .table--stack tbody, .users .table--stack tr, .users .table--stack td, .users .table--stack th[scope="row"] { display: block; }
+  .users .table--stack tr { padding: var(--s3); border-bottom: 1px solid var(--line); }
+  .users .table--stack tbody tr:last-child { border-bottom: 0; }
+  .users .table--stack td, .users .table--stack th[scope="row"] { border: 0; padding: 3px 0; display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: var(--s2); align-items: center; }
+  .users .table--stack td::before, .users .table--stack th[scope="row"]::before { content: attr(data-label); color: var(--ink-3); font-size: var(--fs-xs); font-weight: 600; }
+  .users .table--stack .perm-select { min-width: 0; }
+  .users .table--stack td > .tag, .users .table--stack td > .yn { justify-self: start; }
+  .users .kv__row { grid-template-columns: 1fr; gap: 0; }
+  .dialog--share .table th, .dialog--share .table td { display: block; border: 0; padding: 2px 0; }
+  .dialog--share .table tr { display: block; padding: var(--s2) 0; border-bottom: 1px solid var(--line); }
+  .dialog--share .table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+}

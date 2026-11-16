@@ -1,0 +1,120 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000001
+FN:Dana Importer
+N:Importer;Dana;;;
+TEL;TYPE=CELL:+1 555 0101
+EMAIL;TYPE=INTERNET:dana@example.org
+ADR;TYPE=HOME:;;1 Example Road;Sampletown;;00001;Exampleland
+NOTE:Line one\nLine two\, escaped
+CATEGORIES:Friends,Work
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000002
+FN:Eli Sample
+N:Sample;Eli;;;
+TEL;VALUE=uri;TYPE=cell:tel:+1-555-0102
+EMAIL;TYPE=work:eli@example.org
+BDAY:19840412
+ANNIVERSARY:20100607
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000003
+FN:Fay Lossynote
+N:Lossynote;Fay;;;
+NOTE:Met at the fair, then again later
+TITLE:Engineer, Lead
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000004
+FN:Gus Xprop
+N:Xprop;Gus;;;
+X-CUSTOM-FIELD:alpha,beta
+TEL;TYPE=WORK:+1 555 0104
+END:VCARD
+This line sits between the cards and belongs to none.
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000005
+FN:Hana Photo
+N:Photo;Hana;;;
+PHOTO:data:image/jpeg;base64,AwoRGB8mLTQ7QklQV15lbHN6gYiPlp2kq7K5wMfO1dzj6v
+ H4/wYNFBsiKTA3PkVMU1phaG92fYSLkpmgp661vMPK0djf5u30+wIJEBceJSwzOkFIT1ZdZGty
+ eYCHjpWco6qxuL/GzdTb4unw9/4FDBMaISgvNj1ES1JZYGdudXyDipGYn6attLvCydDX3uXs8/
+ oBCA8WHSQrMjlAR05VXGNqcXh/ho2Um6KpsLe+xczT2uHo7/b9BAsSGSAnLjU8Q0pRWF9mbXR7
+ gomQl56lrLO6wcjP1t3k6/L5AAcOFRwjKjE4P0ZNVFtiaXB3foWMk5qhqK+2vcTL0tng5+71/A
+ MKERgfJi00O0JJUFdeZWxzeoGIj5adpKuyucDHztXc4+rx+P8GDRQbIikwNz5FTFNaYWhvdn2E
+ i5KZoKeutbzDytHY3+bt9PsCCRAXHiUsMzpBSE9WXWRrcnmAh46VnKOqsbi/xs3U2+Lp8Pf+BQ
+ wTGiEoLzY9REtSWWBnbnV8g4qRmJ+mrbS7wsnQ197l7PP6AQgPFh0kKzI5QEdOVVxjanF4f4aN
+ lJuiqbC3vsXM09rh6O/2/QQLEhkgJy41PENKUVhfZm10e4KJkJeepayzusHIz9bd5Ovy+QAHDh
+ UcIyoxOD9GTVRbYmlwd36FjJOaoaivtr3Ey9LZ4Ofu9fwDChEYHyYtNDtCSVBXXmVsc3qBiI+W
+ naSrsrnAx87V3OPq8fj/Bg0UGyIpMDc+RUxTWmFob3Z9hIuSmaCnrrW8w8rR2N/m7fT7AgkQFx
+ 4lLDM6QUhPVl1k
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000006
+FN:Ivo Nick
+N:Nick;Ivo;;;
+NICKNAME:Jay,Janie
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+FN:Jo Nouid
+N:Nouid;Jo;;;
+EMAIL;TYPE=INTERNET:jo@example.org
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000101
+X-ADDRESSBOOKSERVER-KIND:group
+FN:Book club
+N:Book club;;;;
+X-ADDRESSBOOKSERVER-MEMBER:urn:uuid:7a0c1e00-0000-4000-8000-000000000001
+X-ADDRESSBOOKSERVER-MEMBER:urn:uuid:7a0c1e00-0000-4000-8000-000000000002
+X-ADDRESSBOOKSERVER-MEMBER:urn:uuid:7a0c1e00-0000-4000-8000-0000000000ff
+END:VCARD
+BEGIN:VCARD
+VERSION:4.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000102
+KIND:group
+FN:Family
+MEMBER:urn:uuid:7a0c1e00-0000-4000-8000-000000000002
+MEMBER:urn:uuid:7a0c1e00-0000-4000-8000-000000000003
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000001
+FN:Dana Twin
+N:Twin;Dana;;;
+END:VCARD
+BEGIN:VCARD
+VERSION:2.1
+N:Oldformat;Ola
+FN:Ola Oldformat
+TEL;HOME;VOICE:+1 555 0107
+END:VCARD
+BEGIN:VCARD
+VERSION:3.0
+FN:Broken Card
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:7a0c1e00-0000-4000-8000-000000000008
+FN:Kai Lastcard
+N:Lastcard;Kai;;;
+TEL;TYPE=HOME:+1 555 0108
+END:VCARD

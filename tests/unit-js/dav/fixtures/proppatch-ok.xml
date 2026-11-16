@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav" xmlns:ICAL="http://apple.com/ns/ical/"><response><href>/alice/work/</href><propstat><prop><displayname /><ICAL:calendar-color /><C:calendar-description /></prop><status>HTTP/1.1 200 OK</status></propstat></response></multistatus>

@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:text-unescaped@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260311T090000Z
+DTEND:20260311T100000Z
+SUMMARY:Apples, pears; and plums
+DESCRIPTION:Writers that do not escape: a, b; c
+LOCATION:Hall 1, Floor 2; Example Campus
+COMMENT:Plain comment, with; separators
+END:VEVENT
+END:VCALENDAR

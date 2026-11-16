@@ -1,0 +1,37 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI settings screen and the Run 3 shell additions (rail-only navigation entries, phone top-bar shortcuts).
+   Design tokens only (tokens.css). Mobile first; targets are at least var(--tap) high. No inline styles. */
+
+/* ---------- shell additions ---------- */
+/* Users, Settings and Diagnostics are desktop-rail entries; phones keep four tabs (Calendar, Tasks, Contacts,
+   Collections) and reach Users and Settings through the top bar. */
+@media (max-width: 899px) {
+  .nav__item--rail { display: none; }
+}
+.topbar__icon { padding: 0 var(--s3); }
+@media (min-width: 900px) {
+  .topbar__icon { display: none; }
+}
+.topbar__icon[aria-current="page"] { border-color: var(--accent); color: var(--accent-strong); }
+
+/* ---------- settings screen ---------- */
+.settings { display: grid; gap: var(--s5); }
+.settings__status { color: var(--ink-2); font-size: var(--fs-sm); }
+.settings__section {
+  display: grid; gap: var(--s3); padding: var(--s4);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+}
+.settings__facts { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); gap: var(--s1) var(--s4); margin: 0; }
+.settings__facts dt { color: var(--ink-3); font-size: var(--fs-sm); }
+.settings__facts dd { margin: 0; overflow-wrap: anywhere; }
+.settings__note { color: var(--ink-2); font-size: var(--fs-sm); }
+.settings__form { display: grid; gap: var(--s3); max-width: 28rem; }
+.settings__actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.settings__radios { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); border: 0; margin: 0; padding: 0; }
+.settings__radios legend { font-weight: 650; padding: 0; margin-bottom: var(--s1); }
+.settings .radio { display: inline-flex; align-items: center; gap: var(--s2); min-height: var(--tap); cursor: pointer; }
+.settings .field__error { color: var(--danger); font-size: var(--fs-sm); }
+.settings .secret { font-family: var(--mono); font-size: var(--fs-lg); overflow-wrap: anywhere; padding: var(--s3); background: var(--sunken); border-radius: var(--r-md); }
+
+/* ---------- About ---------- */
+.settings__link { overflow-wrap: anywhere; }

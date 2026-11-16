@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Example Corp//Calendar 1.0//EN
+BEGIN:VEVENT
+UID:xprops@example.org
+DTSTAMP:20260101T000000Z
+DTSTART:20260506T090000Z
+DTEND:20260506T100000Z
+SUMMARY:Vendor properties
+x-custom-lower;x-param=Mixed:lowercase property name
+X-MICROSOFT-CDO-BUSYSTATUS:BUSY
+X-APPLE-TRAVEL-ADVISORY-BEHAVIOR:AUTOMATIC
+X-APPLE-STRUCTURED-LOCATION;VALUE=URI;X-ADDRESS="1 Example Street, Sampleto
+ wn";X-TITLE="Example Hall":geo:12.50,-34.25
+GEO:12.50;-34.25
+CLASS:PRIVATE
+PRIORITY:5
+COMMENT:Plain comment
+ATTACH;FMTTYPE=application/pdf:https://example.org/files/agenda.pdf
+X-QUOTED;X-P="a:b;c":needs-quotes
+END:VEVENT
+END:VCALENDAR

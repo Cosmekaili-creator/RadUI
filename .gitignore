@@ -1,0 +1,28 @@
+# local, machine-specific configuration (never published)
+.env.local
+deploy.local/
+tools/.forbidden-tokens.local
+/snapshot*/
+
+# throwaway instances and logs
+.throwaway/
+*.log
+
+# generated
+/dist/
+src/sw-manifest.js
+node_modules/
+__pycache__/
+*.pyc
+
+# browser test screenshots
+tests/e2e/shots/
+
+# secrets and environment files (never published)
+.env
+.env.*
+*.pem
+*.key
+*.p12
+id_rsa*
+id_ed25519*

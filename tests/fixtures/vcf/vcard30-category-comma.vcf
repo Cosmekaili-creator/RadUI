@@ -1,0 +1,8 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000005
+FN:Cato Categories
+N:Categories;Cato;;;
+CATEGORIES:Friends\, family,Work,Book club
+END:VCARD

@@ -1,0 +1,98 @@
+# radui-admin generated; DO NOT EDIT. generation=7
+
+[g000-generation]
+user: ^$
+collection: ^radui-gen-000000000000000000000000a0000007$
+permissions: i
+
+[g010-root]
+user: .+
+collection: ^$
+permissions: R
+
+[s0001-admin-principal-alice]
+user: ^alice$
+collection: ^alice$
+permissions: RW
+
+[s0002-admin-home-bob-alice]
+user: ^alice$
+collection: ^bob$
+permissions: RW
+
+[s0003-admin-home-carol-alice]
+user: ^alice$
+collection: ^carol$
+permissions: RW
+
+[s0004-admin-toplevel-alice]
+user: ^alice$
+collection: ^[^/]+$
+permissions: R
+
+[s0005-admin-all-alice]
+user: ^alice$
+collection: ^[^/]+/.+$
+permissions: RWrwDO
+
+[s0006-admin-principal-bob]
+user: ^bob$
+collection: ^bob$
+permissions: RW
+
+[s0007-admin-home-alice-bob]
+user: ^bob$
+collection: ^alice$
+permissions: RW
+
+[s0008-admin-home-carol-bob]
+user: ^bob$
+collection: ^carol$
+permissions: RW
+
+[s0009-admin-toplevel-bob]
+user: ^bob$
+collection: ^[^/]+$
+permissions: R
+
+[s0010-admin-all-bob]
+user: ^bob$
+collection: ^[^/]+/.+$
+permissions: RWrwDO
+
+[s0011-user-principal-agent-1]
+user: ^agent\-1$
+collection: ^agent\-1$
+permissions: RW
+
+[s0012-user-principal-carol]
+user: ^carol$
+collection: ^carol$
+permissions: RW
+
+[s0013-user-own-carol]
+user: ^carol$
+collection: ^carol/[^/]+$
+permissions: rwDO
+
+[s0014-user-principal-dave]
+user: ^dave$
+collection: ^dave$
+permissions: RW
+
+[s0015-grant-agent-1]
+user: ^agent\-1$
+collection: ^carol/cal$
+permissions: r
+
+[s0016-grant-dave]
+user: ^dave$
+collection: ^carol/cal$
+permissions: rwl
+
+[zzz-deny]
+user: .*
+collection: .*
+permissions: 
+
+# radui-end generation=7 sha256=f2cbaf1470206d247e196d87f8cfebec4c0cd1f29d1ca184794754871b11c83b

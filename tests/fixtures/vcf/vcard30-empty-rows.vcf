@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:22222222-3333-4444-5555-000000000021
+FN:Edda Emptyrows
+N:Emptyrows;Edda;;;
+TEL;TYPE=CELL:+1 555 0171
+item1.TEL:
+item1.X-ABLabel:Old office
+EMAIL;TYPE=INTERNET:edda@example.org
+ADR;TYPE=home:;;;;;;
+ADR;TYPE=work:;;2 Example Road;Sampletown;;00002;Exampleland
+END:VCARD

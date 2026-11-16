@@ -1,0 +1,22 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:aaaaaaaa-bbbb-cccc-dddd-000000000003
+FN:Grace Grouped
+N:Grouped;Grace;;;
+item1.TEL;type=pref;type=VOICE:+1 555 0120
+item1.X-ABLabel:main
+Item2.EMAIL;TYPE=INTERNET:grace@example.org
+Item2.X-ABLabel:_$!<Work>!$_
+item3.URL:https://example.org/grace
+item3.X-ABLabel:_$!<HomePage>!$_
+item4.ADR;type=HOME:;;4 Example Row;Sampletown;;00004;Exampleland
+item4.X-ABADR:xx
+item5.X-ABRELATEDNAMES;type=pref:Somebody Else
+item5.X-ABLabel:_$!<Friend>!$_
+item6.X-ABDATE;type=pref:2001-02-03
+item6.X-ABLabel:_$!<Anniversary>!$_
+TEL;TYPE=CELL:+1 555 0121
+grp.X-LONELY:a grouped property alone
+REV:2026-01-01T00:00:00Z
+END:VCARD

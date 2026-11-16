@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:4.0
+UID:urn:uuid:22222222-3333-4444-5555-000000000003
+FN:Quinn Ranked
+N:Ranked;Quinn;;;
+TEL;PREF=1;TYPE=cell:+1 555 0137
+TEL;PREF=2;TYPE=work,voice:+1 555 0138
+TEL;TYPE=home:+1 555 0139
+EMAIL;PREF=1:quinn.one@example.org
+EMAIL;PREF=2;TYPE=work:quinn.two@example.org
+REV:20260101T000000Z
+END:VCARD

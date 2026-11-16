@@ -1,0 +1,133 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI tasks (WP C1): merged task list, task detail and task form. Design tokens only (tokens.css); mobile first,
+   desktop from 900 px. No inline styles anywhere: a list colour arrives as the custom property --cal, set through the
+   CSSOM with a whitelisted value. Everything is scoped under `.tasks-screen`, `.task-screen` and `.tform`.
+   State is never colour alone: overdue = red text AND the words "Overdue since"; priority = bars AND a word; done = a tick
+   mark AND strike-through AND aria-pressed; a repeating task says "Repeats". */
+
+.tasks-screen, .task-screen, .tform { display: grid; gap: var(--s3); min-width: 0; max-width: 56rem; align-content: start; }
+.tasks-screen .tag, .task-screen .tag, .tform .tag {
+  display: inline-flex; align-items: center; gap: var(--s1); min-height: 22px; padding: 0 var(--s2); border-radius: var(--r-pill);
+  background: var(--sunken); color: var(--ink-2); font-size: var(--fs-xs); font-weight: 600; overflow-wrap: anywhere;
+}
+.tasks-screen .tag--warn { background: var(--warn-soft); color: var(--warn); }
+.tasks-screen .tag--quiet, .task-screen .tag--quiet, .tform .tag--quiet { background: transparent; border: 1px solid var(--line-strong); }
+.task-screen .tag--danger { background: var(--danger-soft); color: var(--danger); }
+.tasks-screen .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--cal, var(--accent)); flex: none; }
+.tasks-screen .meta-line, .task-screen .meta-line, .tform .meta-line { font-size: var(--fs-sm); color: var(--ink-3); }
+.tasks-screen .muted, .task-screen .muted, .tform .muted { color: var(--ink-2); }
+.tasks-screen .state, .task-screen .state, .tform .state { display: grid; gap: var(--s3); justify-items: start; padding: var(--s5) 0; }
+.tasks-screen .state__title, .task-screen .state__title, .tform .state__title { font-size: var(--fs-lg); font-weight: 650; }
+.tasks-screen .state__actions, .tform .state__actions { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.tasks-screen .btn--danger-quiet, .task-screen .btn--danger-quiet, .tform .btn--danger-quiet { color: var(--danger); border-color: var(--danger); background: transparent; }
+.tasks-screen .btn[aria-disabled="true"] { opacity: 0.55; cursor: not-allowed; }
+.tasks-screen .link, .task-screen .link { color: var(--accent-strong); text-underline-offset: 2px; overflow-wrap: anywhere; }
+.tasks-screen .notice { margin-top: var(--s2); }
+.task-screen .notice, .tform .notice { margin: 0; }
+
+/* ---------- head, filters, sort ---------- */
+.tasks__head { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: center; justify-content: space-between; }
+.tasks__head .page-title { margin: 0; }
+.tasks__new { display: grid; gap: var(--s1); justify-items: end; }
+.tasks__toolbar { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: center; justify-content: space-between; min-width: 0; }
+.tasks__sort { display: inline-flex; align-items: center; gap: var(--s2); }
+.tasks__status { font-size: var(--fs-sm); color: var(--ink-2); }
+.tasks-screen .seg { display: inline-flex; background: var(--sunken); border-radius: var(--r-md); padding: 3px; gap: 2px; max-width: 100%; }
+.tasks-screen .seg--scroll { overflow-x: auto; }
+.tasks-screen .seg__item {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2); min-height: 38px; padding: 0 var(--s3); border-radius: var(--r-sm);
+  color: var(--ink-2); font-weight: 600; font-size: var(--fs-sm); text-decoration: none; white-space: nowrap;
+}
+.tasks-screen .seg__item:hover { color: var(--ink); }
+.tasks-screen .seg__item[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px var(--line-strong); }
+.seg__count { font-variant-numeric: tabular-nums; color: var(--ink-3); font-weight: 500; }
+
+/* ---------- list toggles ---------- */
+.tasklist-bar { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s4); padding: var(--s2) 0; }
+.tasklist { display: inline-flex; align-items: center; gap: var(--s2); min-height: 32px; }
+.tasklist__label { display: inline-flex; flex-wrap: wrap; gap: var(--s2); align-items: center; font-size: var(--fs-sm); font-weight: 600; cursor: pointer; }
+.tasklist__tags { display: inline-flex; gap: var(--s1); }
+.tasklist__loading, .tasklist__failed { font-size: var(--fs-xs); color: var(--ink-3); }
+.tasklist__failed { color: var(--danger); }
+
+/* ---------- rows ---------- */
+.tasks { display: grid; list-style: none; margin: 0; padding: 0; min-width: 0; }
+.tasks--root { border: 1px solid var(--line); border-radius: var(--r-lg); background: var(--surface); overflow: hidden; }
+.tasks--root:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.tasks--root[hidden] { display: none; }
+.tasks--root > .task { border-top: 1px solid var(--line); }
+.tasks--root > .task:first-child { border-top: 0; }
+.tasks--sub { margin-left: var(--s5); border-left: 2px solid var(--line); }
+.tasks--sub:empty { display: none; }
+.task { min-width: 0; }
+.task__line { display: flex; gap: var(--s3); align-items: flex-start; padding: var(--s2) var(--s3); min-height: var(--tap); }
+.task[aria-busy="true"] .task__line { opacity: 0.6; }
+.task.is-context > .task__line { background: var(--surface-2); }
+.task.is-context .task__title { color: var(--ink-2); }
+.task.is-done .task__title { text-decoration: line-through; color: var(--ink-3); }
+.tick {
+  flex: none; display: inline-flex; align-items: center; justify-content: center; width: var(--tap); height: var(--tap); margin: calc(var(--s2) * -1) 0 calc(var(--s2) * -1) calc(var(--s3) * -1);
+  border: 0; background: transparent; cursor: pointer; padding: 0; color: var(--accent-ink);
+}
+.tick__mark {
+  display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border: 2px solid var(--control); border-radius: 50%;
+  background: var(--surface); font-weight: 700; font-size: var(--fs-sm); line-height: 1;
+}
+.tick.is-done .tick__mark { background: var(--accent); border-color: var(--accent); }
+.tick:hover:not(:disabled) .tick__mark { border-color: var(--accent); }
+.tick:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; border-radius: var(--r-md); }
+.tick:disabled { cursor: not-allowed; opacity: 0.55; }
+.task__main { display: grid; gap: 2px; flex: 1; min-width: 0; padding: var(--s1) 0; color: inherit; text-decoration: none; min-height: 32px; }
+.task__main:hover .task__title { text-decoration: underline; }
+.task__main:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: var(--r-sm); }
+.task__title { font-weight: 600; overflow-wrap: anywhere; }
+.task__meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); align-items: center; font-size: var(--fs-sm); color: var(--ink-2); }
+.task__due.is-overdue, .is-overdue { color: var(--danger); font-weight: 650; }
+.task__list { display: inline-flex; align-items: center; gap: var(--s1); color: var(--ink-3); }
+.prio { display: inline-flex; align-items: center; gap: var(--s1); font-weight: 600; }
+.prio__bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 12px; }
+.prio__bars i { display: block; width: 3px; border-radius: 1px; background: var(--line-strong); }
+.prio__bars i:nth-child(1) { height: 5px; }
+.prio__bars i:nth-child(2) { height: 8px; }
+.prio__bars i:nth-child(3) { height: 12px; }
+.prio--low .prio__bars i:nth-child(1), .prio--medium .prio__bars i:nth-child(-n+2), .prio--high .prio__bars i { background: var(--accent); }
+.prio--high { color: var(--ink); }
+
+/* ---------- detail ---------- */
+.task-detail { display: grid; gap: var(--s3); min-width: 0; }
+.task-detail .page-title { margin: 0; overflow-wrap: anywhere; }
+.task-detail__status { font-weight: 650; color: var(--ink-2); }
+.task-detail.is-done .page-title { text-decoration: line-through; color: var(--ink-2); }
+.detail__list { display: grid; gap: var(--s3); margin: 0; }
+.detail__row { display: grid; gap: var(--s1); min-width: 0; }
+.detail__row dt { font-size: var(--fs-sm); color: var(--ink-3); font-weight: 600; }
+.detail__row dd { margin: 0; overflow-wrap: anywhere; }
+.detail__children { display: grid; gap: var(--s1); list-style: none; padding: 0; margin: 0; }
+.detail__actions { display: flex; flex-wrap: wrap; gap: var(--s2); padding-top: var(--s3); border-top: 1px solid var(--line); }
+.detail__raw { display: grid; gap: var(--s2); }
+.detail__rawtitle { font-size: var(--fs-md); }
+.task-screen .prose, .tform .prose { max-width: 68ch; white-space: pre-wrap; overflow-wrap: anywhere; }
+.task-screen .chips, .tform .chips { display: flex; flex-wrap: wrap; gap: var(--s2); }
+
+/* ---------- form ---------- */
+/* One vertical spacing token for every row of the form: the form, its field group, the field grid, the due/start blocks and the
+   stacked date/time/zone fields of one block all use it, so the gaps between the rows are equal. */
+.tform { --tform-gap: var(--s4); }
+.tform .form, .tform .form__fields { display: grid; gap: var(--tform-gap); min-width: 0; margin: 0; padding: 0; border: 0; }
+.tform .form__grid { gap: var(--tform-gap); }
+.tform .span-2 { grid-column: 1 / -1; }
+.tform__times { display: grid; gap: var(--tform-gap); }
+.tform__when { display: grid; gap: var(--tform-gap) var(--s3); align-items: start; }
+.tform__when[hidden], .tform .field[hidden] { display: none; }
+.tform .field__static { min-height: var(--tap); display: flex; align-items: center; margin: 0; overflow-wrap: anywhere; }
+.tform .field__label { font-weight: 600; font-size: var(--fs-sm); }
+
+@media (min-width: 600px) {
+  .tform__when { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.2fr); }
+}
+@media (min-width: 900px) {
+  .tasks__head { flex-wrap: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tasks-screen *, .task-screen *, .tform * { transition: none !important; animation: none !important; }
+}

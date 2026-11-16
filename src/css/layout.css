@@ -1,0 +1,77 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI frame: navigation (bottom tab bar under 900 px, side rail from 900 px), header
+   arrangement on phones, banners. Tokens live in tokens.css. Mobile first.
+   No inline styles anywhere: dynamic values go through classes or CSSOM custom properties. */
+
+/* ---------- navigation ---------- */
+.nav {
+  position: fixed; inset: auto 0 0 0; z-index: 20;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.nav__list { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; }
+.nav__link {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px;
+  min-height: var(--tabbar); padding: 0 var(--s1); text-decoration: none; color: var(--ink-3);
+  font-size: var(--fs-xs); font-weight: 550; text-align: center;
+}
+.nav__link:hover { color: var(--ink); }
+.nav__link[aria-current="page"] { color: var(--accent); }
+.nav__link[aria-current="page"] .icon { stroke-width: 2.1; }
+.nav :focus-visible { outline-offset: -3px; }
+.icon { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* room for the fixed tab bar under the content */
+.has-nav .frame { padding-bottom: calc(var(--tabbar) + env(safe-area-inset-bottom, 0px) + var(--s4)); }
+.frame { min-width: 0; display: flex; flex-direction: column; flex: 1; }
+
+/* ---------- header on phones: row 1 brand + sign-out, row 2 language, theme, Activity (never three rows) ---------- */
+.topbar__signout { flex: none; }
+@media (max-width: 599px) {
+  .brand { flex: 1; min-width: 0; }
+  .topbar__signout { order: 2; }
+  .topbar__tools { order: 3; }
+}
+
+/* ---------- banners (PWA states) ---------- */
+.banners { display: grid; gap: var(--s2); width: 100%; max-width: 960px; margin: 0 auto; padding: 0 var(--s4); }
+.banners:not(:has(.banner:not([hidden]))) { display: none; }
+.banner {
+  display: flex; align-items: center; gap: var(--s2); margin-top: var(--s3);
+  padding: var(--s1) var(--s3); border-radius: var(--r-md); min-height: var(--tap);
+  font-size: var(--fs-sm); font-weight: 550; border: 1px solid transparent;
+}
+.banner--offline { background: var(--warn-soft); color: var(--warn); border-color: var(--warn); }
+.banner--update { background: var(--surface); border-color: var(--accent); color: var(--ink); }
+.banner--update > span { flex: 1; min-width: 0; }
+
+/* Wide screens (split views: ctl.wide; the calendar: ctl.full) use the whole main width from 900 px, aligned to its
+   start edge. Centring them with a max-width left an empty gutter beside the list on 1440 and 1920 px screens.
+   Phones and narrow tablets keep the normal single column (.main, 960 px). */
+@media (min-width: 900px) {
+  .main--wide, .main--full { max-width: none; margin-left: 0; margin-right: 0; }
+  /* the status and alert banners sit above the screen: they follow its alignment instead of staying centred */
+  .regions:has(+ .main--wide), .regions:has(+ .main--full) { max-width: none; margin-left: 0; margin-right: 0; }
+}
+
+/* ---------- desktop: side rail ---------- */
+@media (min-width: 900px) {
+  #app.has-nav { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); grid-template-rows: auto 1fr; }
+  #app.has-nav > .skip { grid-column: 1 / -1; }
+  #app.has-nav > .topbar { grid-column: 1 / -1; }
+  #app.has-nav > .nav { grid-column: 1; grid-row: 2; }
+  #app.has-nav > .frame { grid-column: 2; grid-row: 2; }
+  .has-nav .frame { padding-bottom: var(--s6); }
+  .nav {
+    position: static; z-index: auto; border-top: 0; border-right: 1px solid var(--line);
+    padding: var(--s4) var(--s3); background: var(--surface-2); align-self: stretch;
+  }
+  .nav__list { grid-auto-flow: row; grid-auto-columns: auto; gap: 2px; align-content: start; }
+  .nav__link {
+    flex-direction: row; justify-content: flex-start; gap: var(--s3); min-height: var(--tap);
+    padding: 0 var(--s3); border-radius: var(--r-md); font-size: var(--fs-md); color: var(--ink-2); text-align: left;
+  }
+  .nav__link:hover { background: var(--sunken); color: var(--ink); }
+  .nav__link[aria-current="page"] { background: var(--surface); color: var(--ink); box-shadow: inset 3px 0 0 var(--accent), 0 1px 2px rgb(0 0 0 / 0.06); }
+  .nav__link[aria-current="page"] .icon { color: var(--accent); }
+}

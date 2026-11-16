@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav"><response><href>/alice/work/e2.ics</href><propstat><prop><getetag>"15fbc02632e16dfac22d81bbbb381e477694da9e2238b6a1cb17c84340105358"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RadUI Test//EN
+BEGIN:VEVENT
+UID:e2
+DTSTART:20260602T140000Z
+DTEND:20260602T150000Z
+DESCRIPTION:Line one\nLine two with unicode: café 中文
+DTSTAMP:20260101T000000Z
+SUMMARY:Planning
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/alice/work/e3.ics</href><propstat><prop><getetag>"d406e7c6efa7691b64be40820faf4ea6af1bcab5fa835ce170651a4ca8825366"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RadUI Test//EN
+BEGIN:VEVENT
+UID:e3
+DTSTART:20260701T100000Z
+DTEND:20260701T110000Z
+DTSTAMP:20260101T000000Z
+SUMMARY:Retro
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/alice/work/e1.ics</href><propstat><prop><getetag>"16d43c32baa626b387d3631a909aa7ce088fe75c9ace2e460371988ad99be0cf"</getetag><C:calendar-data>BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//RadUI Test//EN
+BEGIN:VEVENT
+UID:e1
+DTSTART:20260601T100000Z
+DTEND:20260601T110000Z
+DTSTAMP:20260101T000000Z
+SUMMARY:Team meeting (moved)
+END:VEVENT
+END:VCALENDAR
+</C:calendar-data></prop><status>HTTP/1.1 200 OK</status></propstat></response></multistatus>

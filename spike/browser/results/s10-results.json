@@ -1,0 +1,592 @@
+{
+  "origin": "http://example.org:18080",
+  "chromium": "158.0.8127.18",
+  "a_authPrompt": [
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "omit",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "omit",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "same-origin",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "same-origin",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "include",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "include",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "omit",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "omit",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "same-origin",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "same-origin",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "include",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "include",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"Radicale - Password Required\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/alice/",
+          "scheme": "basic",
+          "realm": "Radicale - Password Required",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "omit",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "omit",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "same-origin",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "same-origin",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "include",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-no-challenge",
+      "credentials": "include",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "omit",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "omit",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "same-origin",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/ui/api/whoami-challenge",
+          "scheme": "basic",
+          "realm": "stub",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "same-origin",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/ui/api/whoami-challenge",
+          "scheme": "basic",
+          "realm": "stub",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "include",
+      "authorization": "wrong-explicit-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/ui/api/whoami-challenge",
+          "scheme": "basic",
+          "realm": "stub",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "stub-with-challenge",
+      "credentials": "include",
+      "authorization": "no-header",
+      "status": 401,
+      "wwwAuthenticate": "Basic realm=\"stub\"",
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "url": "/ui/api/whoami-challenge",
+          "scheme": "basic",
+          "realm": "stub",
+          "source": "Server"
+        }
+      ]
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "omit",
+      "authorization": "correct-explicit-header",
+      "status": 207,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-PROPFIND",
+      "credentials": "same-origin",
+      "authorization": "correct-explicit-header",
+      "status": 207,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "omit",
+      "authorization": "correct-explicit-header",
+      "status": 403,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "radicale-GET",
+      "credentials": "same-origin",
+      "authorization": "correct-explicit-header",
+      "status": 403,
+      "wwwAuthenticate": null,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    }
+  ],
+  "a_navigationControls": [
+    {
+      "target": "/ui/api/whoami",
+      "status": 401,
+      "authRequiredEvents": 0,
+      "authEvents": []
+    },
+    {
+      "target": "/ui/api/whoami-challenge",
+      "status": 401,
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "scheme": "basic",
+          "realm": "stub"
+        }
+      ]
+    },
+    {
+      "target": "/alice/",
+      "status": 401,
+      "authRequiredEvents": 1,
+      "authEvents": [
+        {
+          "scheme": "basic",
+          "realm": "Radicale - Password Required"
+        }
+      ]
+    }
+  ],
+  "b_storage": {
+    "afterSet": {
+      "session": "present",
+      "local": "present"
+    },
+    "afterReload": {
+      "session": "present",
+      "local": "present"
+    },
+    "afterOtherPathSameOrigin": {
+      "session": "present",
+      "local": "present"
+    },
+    "visibleFromRadicaleWebUiPath": {
+      "session": "present",
+      "local": "present"
+    },
+    "newTabSameContext": {
+      "session": null,
+      "local": "present"
+    },
+    "windowOpenWithOpener": {
+      "session": "present",
+      "local": "present"
+    },
+    "windowOpenNoopener": {
+      "session": null,
+      "local": "present"
+    },
+    "anchorTargetBlank": {
+      "session": null,
+      "local": "present"
+    },
+    "newBrowserContext": {
+      "session": null,
+      "local": null
+    },
+    "afterBrowserRestartSameProfile": {
+      "session": null,
+      "local": "present"
+    }
+  },
+  "c_methods": [
+    {
+      "step": "PROPFIND Depth:0",
+      "method": "PROPFIND",
+      "requestHeaders": "Content-Type,Depth,Authorization",
+      "status": 207,
+      "etag": null,
+      "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol",
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 475,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\"><response><href"
+    },
+    {
+      "step": "PROPFIND Depth:1",
+      "method": "PROPFIND",
+      "requestHeaders": "Content-Type,Depth,Authorization",
+      "status": 207,
+      "etag": null,
+      "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol",
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 1363,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\" xmlns:C=\"urn:ie"
+    },
+    {
+      "step": "MKCALENDAR",
+      "method": "MKCALENDAR",
+      "requestHeaders": "Content-Type,Authorization",
+      "status": 201,
+      "etag": null,
+      "dav": null,
+      "contentType": null,
+      "bodyLength": 0,
+      "bodyHead": ""
+    },
+    {
+      "step": "PROPPATCH",
+      "method": "PROPPATCH",
+      "requestHeaders": "Content-Type,Authorization",
+      "status": 207,
+      "etag": null,
+      "dav": "1, 2, 3, calendar-access, addressbook, extended-mkcol",
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 273,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\" xmlns:ICAL=\"htt"
+    },
+    {
+      "step": "PUT create If-None-Match:*",
+      "method": "PUT",
+      "requestHeaders": "Content-Type,If-None-Match,Authorization",
+      "status": 201,
+      "etag": "\"6bf8fc3106b73bccd7ed9c5efe54b6d24fb7f60207bd396f307ff5f7025d63a3\"",
+      "dav": null,
+      "contentType": null,
+      "bodyLength": 0,
+      "bodyHead": ""
+    },
+    {
+      "step": "PUT overwrite If-Match wrong",
+      "method": "PUT",
+      "requestHeaders": "Content-Type,If-Match,Authorization",
+      "status": 412,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/plain; charset=utf-8",
+      "bodyLength": 20,
+      "bodyHead": "Precondition failed."
+    },
+    {
+      "step": "REPORT calendar-query Depth:1",
+      "method": "REPORT",
+      "requestHeaders": "Content-Type,Depth,Authorization",
+      "status": 207,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 582,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\" xmlns:C=\"urn:ie"
+    },
+    {
+      "step": "REPORT sync-collection",
+      "method": "REPORT",
+      "requestHeaders": "Content-Type,Authorization",
+      "status": 207,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 405,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\"><sync-token>htt"
+    },
+    {
+      "step": "MKCOL addressbook (extended)",
+      "method": "MKCOL",
+      "requestHeaders": "Content-Type,Authorization",
+      "status": 201,
+      "etag": null,
+      "dav": null,
+      "contentType": null,
+      "bodyLength": 0,
+      "bodyHead": ""
+    },
+    {
+      "step": "PUT overwrite If-Match correct",
+      "method": "PUT",
+      "requestHeaders": "Content-Type,If-Match,Authorization",
+      "status": 204,
+      "etag": "\"5bc127251a62f178877747efc1cab154371abcb57d21cdc6a731fa488db61b99\"",
+      "dav": null,
+      "contentType": null,
+      "bodyLength": 0,
+      "bodyHead": ""
+    },
+    {
+      "step": "GET item (ETag readable)",
+      "method": "GET",
+      "requestHeaders": "Authorization",
+      "status": 200,
+      "etag": "\"5bc127251a62f178877747efc1cab154371abcb57d21cdc6a731fa488db61b99\"",
+      "dav": null,
+      "contentType": "text/calendar; charset=utf-8",
+      "bodyLength": 219,
+      "bodyHead": "BEGIN:VCALENDAR VERSION:2.0 PRODID:-//Example//Spike//EN BEGIN:VEVENT UID:sp"
+    },
+    {
+      "step": "DELETE item If-Match",
+      "method": "DELETE",
+      "requestHeaders": "If-Match,Authorization",
+      "status": 200,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 169,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\"><response><href"
+    },
+    {
+      "step": "DELETE collection",
+      "method": "DELETE",
+      "requestHeaders": "Authorization",
+      "status": 200,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 162,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\"><response><href"
+    },
+    {
+      "step": "DELETE addressbook",
+      "method": "DELETE",
+      "requestHeaders": "Authorization",
+      "status": 200,
+      "etag": null,
+      "dav": null,
+      "contentType": "text/xml; charset=utf-8",
+      "bodyLength": 163,
+      "bodyHead": "<?xml version='1.0' encoding='utf-8'?> <multistatus xmlns=\"DAV:\"><response><href"
+    }
+  ],
+  "c_crossOriginControl": {
+    "from": "http://example.org:18080/demo/inherit (no CSP)",
+    "to": "http://127.0.0.1:15240/alice/",
+    "error": "TypeError: Failed to fetch",
+    "radicaleLogShowsOptionsPreflight": true,
+    "fromUiPageWithCsp": {
+      "error": "TypeError: Failed to fetch"
+    }
+  },
+  "notes": [],
+  "requestsPaused": 28,
+  "c_nginxMethodCountsDuringDavSteps": {
+    "PROPFIND": 2,
+    "MKCALENDAR": 1,
+    "PROPPATCH": 1,
+    "PUT": 3,
+    "REPORT": 2,
+    "MKCOL": 1,
+    "GET": 1,
+    "DELETE": 3
+  },
+  "c_preflightOptionsSeen": 0
+}

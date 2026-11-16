@@ -1,0 +1,74 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI conflict dialogs (changed elsewhere, deleted elsewhere, delete refused). Design tokens only: light, dark and
+   the manual theme override come from tokens.css. Mobile first: the dialog scrolls inside itself, the buttons stack. */
+
+.dialog.dialog--conflict {
+  width: min(640px, calc(100vw - 2 * var(--s2)));
+  max-height: calc(100vh - 2 * var(--s2));
+  max-height: calc(100dvh - 2 * var(--s2));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.dialog--conflict .dialog__body { padding: var(--s4); gap: var(--s3); }
+.dialog--conflict .dialog__body > * { min-width: 0; }
+/* the shared dialog footer is empty here: the buttons live in .conflict__actions inside the same body */
+.dialog--conflict .dialog__body > .dialog__actions:empty { display: none; }
+
+.conflict__content { display: grid; gap: var(--s3); }
+.conflict__content > * { min-width: 0; }
+
+/* ---------- the table of differences ---------- */
+.conflict__diff {
+  width: 100%; table-layout: fixed; border-collapse: collapse; font-size: var(--fs-sm);
+  overflow-wrap: anywhere; word-break: break-word;
+}
+.conflict__diff th, .conflict__diff td {
+  text-align: left; vertical-align: top; padding: var(--s2) var(--s1);
+  border-bottom: 1px solid var(--line);
+}
+.conflict__diff thead th { color: var(--ink-3); font-weight: 600; }
+.conflict__diff tbody th { font-weight: 600; color: var(--ink-2); width: 28%; }
+.conflict__diff td { width: 36%; white-space: pre-wrap; }
+.conflict__row[data-both="true"] { background: var(--warn-soft); }
+/* never colour alone: the marker is text */
+.conflict__both { display: block; margin-top: 2px; font-size: var(--fs-xs); font-weight: 600; color: var(--warn); }
+.conflict__empty, .conflict__photo { color: var(--ink-3); }
+.conflict__photo[data-state="changed"] { color: var(--ink); font-weight: 600; }
+.conflict__list { list-style: none; display: grid; gap: 2px; padding: 0; margin: 0; }
+.conflict__norows { padding: var(--s3); border-radius: var(--r-md); background: var(--surface-2); border: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-sm); }
+
+/* ---------- lists: changes that cannot be applied, notes ---------- */
+.conflict__block {
+  display: grid; gap: var(--s2); padding: var(--s3); border-radius: var(--r-md);
+  background: var(--surface-2); border: 1px solid var(--line); font-size: var(--fs-sm);
+}
+.conflict__block-title { font-weight: 650; color: var(--ink); }
+.conflict__items { display: grid; gap: var(--s1); list-style: disc; padding-left: 1.2em; margin: 0; overflow-wrap: anywhere; }
+.conflict__explain { color: var(--ink-2); }
+.conflict__block--unmappable { background: var(--warn-soft); border-color: var(--warn); }
+.conflict__block--unmappable .conflict__block-title { color: var(--warn); }
+.conflict__check { align-items: flex-start; }
+.conflict__check label { overflow-wrap: anywhere; padding-top: var(--s2); }
+
+.conflict__help, .conflict__reason { color: var(--ink-2); font-size: var(--fs-sm); }
+.conflict__reason { color: var(--ink-3); }
+
+/* ---------- status and alert text inside the dialog ---------- */
+.conflict__status, .conflict__alert { padding: var(--s2) var(--s3); border-radius: var(--r-md); font-size: var(--fs-sm); overflow-wrap: anywhere; }
+.conflict__status { background: var(--accent-soft); color: var(--accent-strong); outline: none; }
+.conflict__alert { background: var(--danger-soft); color: var(--danger); border: 1px solid var(--danger); font-weight: 600; }
+.conflict__status[hidden], .conflict__alert[hidden] { display: none; }
+
+/* ---------- buttons: stacked and full width on phones (the primary one first) ---------- */
+.conflict__actions { flex-direction: column; flex-wrap: nowrap; align-items: stretch; padding-top: var(--s2); }
+.conflict__btn { width: 100%; white-space: normal; text-align: center; padding-block: var(--s2); }
+.btn--danger-quiet { color: var(--danger); border-color: var(--danger); background: var(--surface); }
+.btn--danger-quiet:hover { background: var(--danger-soft); }
+.btn--danger-quiet:disabled { color: var(--ink-3); border-color: var(--control); }
+
+@media (min-width: 560px) {
+  .dialog--conflict .dialog__body { padding: var(--s5); gap: var(--s4); }
+  .conflict__diff th, .conflict__diff td { padding: var(--s2); }
+  .conflict__actions { flex-direction: row; flex-wrap: wrap; justify-content: flex-end; align-items: center; }
+  .conflict__btn { width: auto; flex: 1 1 auto; }
+}

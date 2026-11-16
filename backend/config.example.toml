@@ -1,0 +1,83 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# radui-admin configuration (TOML). Every key except allowed_hosts is optional;
+# the values below are the defaults. Unknown keys are refused. The file holds
+# no secrets, but must not be group- or world-writable.
+
+# Radicale as seen from the backend (scheme://host:port, no path).
+radicale_url = "http://127.0.0.1:5232"
+
+# Where the backend listens. Must be a loopback address: put a reverse proxy in front.
+listen = "127.0.0.1:5233"
+
+# URL path prefix of the API as the proxy forwards it (unchanged).
+base_path = "/ui/api"
+
+# REQUIRED. Accepted values of the Host header (host or host:port).
+allowed_hosts = ["rd.example.org"]
+
+# Accepted values of the Origin header when one is sent. Default: https://<each allowed host>.
+allowed_origins = ["https://rd.example.org"]
+
+# Header set by the reverse proxy with the real client address. It is used only when the
+# TCP peer is listed in trusted_proxies and the value is one plain IP address (a value with
+# "%", a list or any other text is ignored: the peer address is used instead). The proxy
+# must OVERWRITE this header on every request.
+trusted_proxy_header = "X-Real-IP"
+
+# Addresses or CIDR networks of the reverse proxies allowed to set trusted_proxy_header.
+# Default: loopback only. [] = never trust the header.
+trusted_proxies = ["127.0.0.1", "::1"]
+
+# Directory holding the generated Radicale files (users, rights, rights.lkg).
+managed_dir = "/etc/radui/managed"
+
+# Private state: model.json, generations/, the .lock file shared with the CLI.
+state_dir = "/var/lib/radui"
+
+# Group that may read the managed files ("" = leave the group alone).
+radicale_group = ""
+
+# Interpreter that can import Radicale; runs the pre-write validation with -I.
+radicale_python = "/usr/bin/python3"
+
+# Directory holding radui_rights.py ("" = the plugin directory next to this package).
+plugin_dir = ""
+
+# bcrypt cost for new passwords (4-16).
+bcrypt_cost = 12
+
+# Failed logins per client address: this many in the window block the address for the block time.
+rate_limit_failures = 10
+rate_limit_window_s = 600
+rate_limit_block_s = 900
+
+# Request rate per client address (token bucket); 0 = off (rely on the reverse proxy).
+requests_per_minute = 300
+requests_burst = 60
+
+# Logins that cannot be created, in addition to the built-in reserved names.
+extra_reserved_logins = []
+
+# Limits (hard maxima: 200 accounts, 2000 grants).
+max_accounts = 200
+max_grants = 2000
+
+# Request body cap in bytes (256-65536).
+max_body_bytes = 16384
+
+# Timeouts in seconds.
+socket_timeout_s = 15
+radicale_timeout_s = 10
+lock_timeout_s = 10
+probe_budget_s = 3
+validate_timeout_s = 20
+
+# Self-heal: every this many seconds the backend checks that the managed files equal what the
+# model generates and that Radicale runs the current generation; if not, it validates and
+# rewrites them (audit event "self-heal"). 0 = off, otherwise 1-86400. Skipped while a change
+# is in progress.
+self_heal_interval_s = 60
+
+# false: a change is refused when the users file cannot be checked with Radicale's own parser
+# (check-radicale fails too). true accepts such a check knowingly.
+allow_unchecked_users = false

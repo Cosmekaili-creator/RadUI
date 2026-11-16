@@ -1,0 +1,15 @@
+BEGIN:VCARD
+VERSION:3.0
+PRODID:-//Example Contacts//Contacts 1.0//EN
+UID:urn:uuid:11111111-2222-3333-4444-555555555502
+FN:Bob Sample
+N:Sample;Bob;;;
+item1.TEL;type=pref;type=VOICE:+1 555 0101
+item1.X-ABLabel:main line
+item2.URL:https://example.org/bob
+item2.X-ABLabel:_$!<HomePage>!$_
+item3.EMAIL;TYPE=INTERNET:bob@example.org
+item3.X-ABLabel:team
+TEL;TYPE=HOME,VOICE:+1 555 0102
+REV:2026-01-01T00:00:00Z
+END:VCARD

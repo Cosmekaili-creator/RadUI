@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555511
+FN:Ivan Apple
+N:Apple;Ivan;;;
+BDAY;X-APPLE-OMIT-YEAR=1604:1604-04-01
+item1.X-ABDATE;type=pref:2012-05-06
+item1.X-ABLabel:_$!<Anniversary>!$_
+END:VCARD

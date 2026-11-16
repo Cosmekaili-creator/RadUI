@@ -1,0 +1,125 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+/* RadUI collections: the list, the create and edit forms, the delete and import dialogs. Design tokens only
+   (tokens.css: light, dark and the manual override). Mobile first; targets are at least var(--tap) high.
+   The calendar colour reaches the page only as the custom property --cal, set through the audited `vars`
+   helper after a whitelist check; this file never writes a colour of its own. No inline styles anywhere. */
+
+/* ---------- shared bits (scoped to this area) ---------- */
+.collections .tag, .dialog--import .tag, .collection-form-screen .tag {
+  display: inline-flex; align-items: center; gap: 4px; padding: 1px 8px; border-radius: var(--r-pill);
+  background: var(--sunken); color: var(--ink-2); font-size: var(--fs-xs); font-weight: 550; line-height: 1.6; white-space: nowrap;
+}
+.collections .tag--quiet, .dialog--import .tag--quiet { background: transparent; border: 1px solid var(--line); }
+.collections .tag--ok, .dialog--import .tag--ok { background: var(--ok-soft); color: var(--ok); }
+.collections .tag--warn, .dialog--import .tag--warn { background: var(--warn-soft); color: var(--warn); }
+.collections .notice--quiet, .collection-form-screen .notice--quiet, .dialog--import .notice--quiet {
+  background: var(--surface-2); color: var(--ink-2); border: 1px solid var(--line);
+}
+.collections .notice p + p, .collection-form-screen .notice p + p, .dialog .notice p + p { margin-top: var(--s2); }
+.collection-form-screen .notice__title { font-weight: 650; }
+.collection-form-screen .small, .dialog--import .small { font-size: var(--fs-sm); }
+
+/* ---------- list ---------- */
+.collections { display: grid; gap: var(--s4); }
+.collections .toolbar { display: flex; flex-wrap: wrap; gap: var(--s3); align-items: center; justify-content: space-between; }
+.collections .toolbar__end { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.collections .page-sub { font-size: var(--fs-sm); }
+.crows-section { display: grid; gap: var(--s2); }
+.crows { display: grid; gap: var(--s3); }
+.crow {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--s3); padding: var(--s4);
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg);
+}
+.crow__swatch { width: 14px; height: 14px; margin-top: 7px; border-radius: 4px; background: var(--cal, var(--ink-3)); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.crow__swatch--book { width: 14px; height: 18px; margin-top: 5px; border-radius: 2px 4px 4px 2px; background: var(--sunken); border-left: 5px solid var(--ink-2); }
+.crow__main { display: grid; gap: var(--s1); min-width: 0; }
+.crow__name { font-size: var(--fs-lg); font-weight: 650; letter-spacing: -0.01em; overflow-wrap: anywhere; }
+.crow__meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); align-items: center; font-size: var(--fs-sm); color: var(--ink-2); }
+.crow__desc { color: var(--ink-2); font-size: var(--fs-sm); white-space: pre-wrap; overflow-wrap: anywhere; }
+.crow__shared { font-size: var(--fs-sm); color: var(--ink-2); overflow-wrap: anywhere; }
+.crow__shared.is-private { color: var(--ink-3); }
+.crow__shared-label { font-weight: 650; }
+.crow__grantee strong { font-weight: 650; color: var(--ink); }
+.crow__tech { font-size: var(--fs-xs); color: var(--ink-3); }
+.crow__tech > summary { min-height: var(--tap); display: flex; align-items: center; cursor: pointer; }
+.crow__techlist { display: grid; gap: var(--s1); font-family: var(--mono); overflow-wrap: anywhere; }
+.crow__techlist div { display: grid; gap: 0; }
+.crow__techlist dt { color: var(--ink-3); font-family: var(--font); }
+.crow__techlist dd { margin: 0; color: var(--ink-2); }
+.crow__actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--s2); }
+.crow__actions .btn { min-height: var(--tap); padding: 0 var(--s3); font-size: var(--fs-sm); }
+.collections__empty { padding: var(--s5); border: 1px dashed var(--line-strong); border-radius: var(--r-lg); color: var(--ink-2); }
+@media (min-width: 720px) {
+  .crow { grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; }
+  .crow__actions { grid-column: auto; justify-content: flex-end; max-width: 340px; }
+}
+
+/* ---------- forms ---------- */
+.collection-form-screen { display: grid; gap: var(--s4); justify-items: start; }
+.collection-form-screen > * { max-width: 100%; }
+.collection-form-screen .form { display: grid; gap: var(--s5); width: min(560px, 100%); padding-bottom: var(--s6); }
+.collection-form-screen .form__actions { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: flex-end; align-items: center; padding-top: var(--s4); border-top: 1px solid var(--line); }
+.collection-form-screen .fieldset, .dialog--import .fieldset {
+  border: 1px solid var(--line); border-radius: var(--r-lg); padding: var(--s3) var(--s4) var(--s4); margin: 0;
+  display: grid; gap: var(--s3); min-width: 0; background: var(--surface);
+}
+.collection-form-screen .fieldset__legend, .dialog--import .fieldset__legend { font-size: var(--fs-sm); font-weight: 650; color: var(--ink-2); padding: 0 var(--s1); }
+.input--area { min-height: calc(3 * var(--tap)); padding-top: var(--s2); padding-bottom: var(--s2); resize: vertical; }
+.swatches { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.swatch { position: relative; display: inline-flex; align-items: center; gap: var(--s2); padding: 0 var(--s3) 0 var(--s2); min-height: var(--tap); border: 1px solid var(--line); border-radius: var(--r-pill); cursor: pointer; }
+.swatch input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.swatch__chip { width: 22px; height: 22px; border-radius: 50%; background: var(--cal, var(--ink-3)); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.swatch__name { font-size: var(--fs-sm); font-weight: 550; }
+.swatch:has(input:checked) { border-color: var(--ink); border-width: 2px; padding-left: calc(var(--s2) - 1px); }
+.swatch:has(input:checked) .swatch__name::after { content: " \2713"; }
+.swatch:has(input:focus-visible) { outline: 3px solid var(--focus); outline-offset: 2px; }
+.collform__advanced > summary { min-height: var(--tap); display: flex; align-items: center; color: var(--accent-strong); font-weight: 550; cursor: pointer; }
+.collform__advanced { display: grid; gap: var(--s2); }
+.collection-form-screen .radio, .dialog--import .radio { display: inline-flex; align-items: center; gap: var(--s2); min-height: var(--tap); cursor: pointer; }
+.collection-form-screen input[type="radio"], .dialog--import input[type="radio"] { width: 20px; height: 20px; accent-color: var(--accent); flex: none; margin: 0; }
+
+/* ---------- delete dialog ---------- */
+.delete__count { font-weight: 650; }
+.delete__export { display: grid; gap: var(--s2); justify-items: start; }
+
+/* ---------- import dialog ---------- */
+.dialog.dialog--import {
+  width: min(760px, calc(100vw - 2 * var(--s2)));
+  max-height: calc(100vh - 2 * var(--s2));
+  max-height: calc(100dvh - 2 * var(--s2));
+  overflow-y: auto; overscroll-behavior: contain;
+}
+.dialog--import .dialog__body { padding: var(--s4); gap: var(--s3); }
+.dialog--import .dialog__body > * { min-width: 0; }
+/* The file field: the native input is visually hidden but stays focusable; a label styled as a button and the file name are shown. */
+.file-pick { position: relative; display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2) var(--s3); }
+.input--file-native {
+  position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; border: 0; opacity: 0; overflow: hidden; clip: rect(0 0 0 0);
+}
+.file-pick__btn { cursor: pointer; flex: none; }
+.input--file-native:focus-visible ~ .file-pick__btn { outline: 3px solid var(--focus); outline-offset: 2px; }
+.input--file-native:disabled ~ .file-pick__btn { opacity: 0.55; cursor: not-allowed; }
+.file-pick__name { min-width: 0; flex: 1 1 8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-3); font-size: var(--fs-sm); }
+.file-pick__name--set { color: var(--ink); }
+.import__pick { display: grid; gap: var(--s3); }
+.import__preview { display: grid; gap: var(--s2); }
+.import__summary { font-weight: 650; }
+.dialog--import .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r-md); background: var(--surface); }
+.dialog--import .table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+.dialog--import .table th, .dialog--import .table td { text-align: left; padding: var(--s2); border-bottom: 1px solid var(--line); vertical-align: top; overflow-wrap: anywhere; }
+.dialog--import .table thead th { color: var(--ink-3); font-weight: 600; }
+/* the Result column of the report keeps its words whole ("Skipped", "Created"); the Details column takes the slack */
+.dialog--import .table .import__result { white-space: nowrap; overflow-wrap: normal; }
+.dialog--import .table tbody tr:last-child > * { border-bottom: 0; }
+.import__notes { display: grid; gap: var(--s1); }
+.import__note { color: var(--ink-2); }
+.import__note--warn { color: var(--warn); font-weight: 600; }
+.dialog--import .check--block { align-items: flex-start; }
+.dialog--import .check--block span { padding-top: var(--s2); overflow-wrap: anywhere; }
+.dialog--import .radio--block { display: flex; align-items: flex-start; padding: var(--s2) 0; min-height: 0; }
+.dialog--import .radio--block input { margin-top: 4px; }
+.import__run, .import__report { display: grid; gap: var(--s3); }
+@media (min-width: 560px) {
+  .dialog--import .dialog__body { padding: var(--s5); gap: var(--s4); }
+  .import__pick { grid-template-columns: 1fr 1fr; }
+}

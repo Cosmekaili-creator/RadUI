@@ -1,0 +1,11 @@
+{
+  "basePath": "./",
+  "radicaleBasePath": "/",
+  "apiBasePath": "api/",
+  "defaultLanguage": null,
+  "defaultTimeZone": null,
+  "firstWeekday": null,
+  "appTitle": "RadUI",
+  "sourceUrl": "",
+  "debug": false
+}

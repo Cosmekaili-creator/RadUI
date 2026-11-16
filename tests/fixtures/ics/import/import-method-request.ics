@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+PRODID:-//Example Mail//Invitations 2.1//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:invite-1@example.org
+DTSTAMP:20260105T080000Z
+DTSTART:20260512T140000Z
+DTEND:20260512T150000Z
+SUMMARY:Planning session
+ORGANIZER;CN=Olivia Organizer:mailto:olivia@example.org
+ATTENDEE;CN=Alice Example;PARTSTAT=NEEDS-ACTION;RSVP=TRUE:mailto:alice@example.org
+DESCRIPTION:A long agenda that the sender folded at the usual width so that 
+ the continuation line has to be kept exactly as it is in the file.
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:invite-2@example.org
+DTSTAMP:20260105T080000Z
+DTSTART;VALUE=DATE:20260520
+DTEND;VALUE=DATE:20260521
+SUMMARY:Offsite day
+END:VEVENT
+END:VCALENDAR

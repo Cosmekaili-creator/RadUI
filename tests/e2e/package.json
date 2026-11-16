@@ -1,0 +1,13 @@
+{
+  "name": "radui-e2e",
+  "private": true,
+  "description": "Browser tests for RadUI. Dependencies are installed OUTSIDE the repository (no node_modules here); see README of spike/browser for the recipe.",
+  "license": "AGPL-3.0-or-later",
+  "type": "module",
+  "devDependencies": {
+    "@playwright/test": "1.65.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

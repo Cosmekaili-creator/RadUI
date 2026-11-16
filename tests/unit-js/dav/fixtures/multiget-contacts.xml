@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<multistatus xmlns="DAV:" xmlns:CR="urn:ietf:params:xml:ns:carddav"><response><href>/alice/people/c2.vcf</href><propstat><prop><getetag>"081b7194ad0112639856c3b4b76cb7e43720c4088c60470e9e48a43efbad23b5"</getetag><CR:address-data>BEGIN:VCARD
+VERSION:3.0
+UID:c2
+EMAIL;TYPE=INTERNET:alan@example.org
+FN:Alan Turing
+N:Turing;Alan;;;
+END:VCARD
+</CR:address-data></prop><status>HTTP/1.1 200 OK</status></propstat></response><response><href>/alice/people/c1.vcf</href><propstat><prop><getetag>"2272aa991a99aadd75acfa1cd62302c7c7742ed2da9230c285e30b2cc9e0858e"</getetag><CR:address-data>BEGIN:VCARD
+VERSION:3.0
+UID:c1
+EMAIL;TYPE=INTERNET:ada@example.org
+FN:Ada Lovelace
+N:Lovelace;Ada;;;
+END:VCARD
+</CR:address-data></prop><status>HTTP/1.1 200 OK</status></propstat></response></multistatus>

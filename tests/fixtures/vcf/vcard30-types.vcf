@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555504
+FN:Dave Types
+N:Types;Dave;;;
+TEL;TYPE=HOME,VOICE:+1 555 0105
+TEL;type=WORK;type=VOICE;type=pref:+1 555 0106
+TEL;TYPE="CELL,MSG":+1 555 0107
+EMAIL;TYPE=HOME;X-CUSTOM="a;b:c":dave@example.org
+ADR;TYPE=HOME,POSTAL;X-CUSTOM="a;b:c":;;2 Example Road;Sampletown;;00001;Ex
+ ampleland
+END:VCARD

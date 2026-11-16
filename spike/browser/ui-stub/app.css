@@ -1,0 +1,4 @@
+/* SPDX-License-Identifier: AGPL-3.0-or-later */
+:root { color-scheme: light dark; }
+body { font-family: system-ui, sans-serif; margin: 2rem; }
+.ready h1 { color: rgb(1, 2, 3); }

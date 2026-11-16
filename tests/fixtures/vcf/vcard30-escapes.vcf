@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+UID:urn:uuid:11111111-2222-3333-4444-555555555519
+FN:Escapes\, Test
+N:Escapes\, Test;Anna\;Maria;;;
+ORG:Foo\; Bar\, Inc.;Unit
+ADR:;;10 Example Lane\, Suite 4;Sampletown;;00002;Exampleland
+NOTE:Backslash \\ and newline\nend
+END:VCARD
